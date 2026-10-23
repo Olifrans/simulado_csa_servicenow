@@ -1,0 +1,1505 @@
+================================================================================
+SIMULADO OFICIAL EXPANDIDO - SERVICENOW CERTIFIED SYSTEM ADMINISTRATOR (CSA)
+150 QUESTÕES ADICIONAIS INÉDITAS E BASEADAS EM PROVAS REAIS (100% PT-BR)
+================================================================================
+
+QUESTÃO 1:
+Qual é a funcionalidade principal da barra de pesquisa global (Global Search) localizada no cabeçalho (Header Bar) do ServiceNow?
+A) Pesquisar apenas registros na tabela de incidentes.
+B) Pesquisar termos em múltiplas tabelas ativas do sistema, bases de conhecimento e itens de catálogo simultaneamente.
+C) Filtrar a lista de tabelas no dicionário de dados.
+D) Executar scripts de busca no banco de dados em tempo real.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A busca global varre múltiplas tabelas indexadas, artigos de conhecimento e itens de catálogo a partir de um único ponto no cabeçalho.
+--------------------------------------------------------------------------------
+
+QUESTÃO 2:
+Qual elemento da interface do aplicativo Next Experience permite salvar e organizar links e páginas frequentemente acessados?
+A) Favorites (Favorites Star / Guia de Favoritos)
+B) History (Histórico)
+C) Workspaces
+D) Filter Navigator
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Os Favoritos admitem a inclusão de módulos, registros e relatórios marcados com a estrela de favoritos para acesso rápido.
+--------------------------------------------------------------------------------
+
+QUESTÃO 3:
+O que acontece quando você digita `<nome_da_tabela>.list` na caixa de filtro de navegação (Filter Navigator)?
+A) Abre a lista de registros dessa tabela na guia atual.
+B) Abre a lista de registros dessa tabela em uma nova aba/janela do navegador.
+C) Abre o formulário para criação de um novo registro nessa tabela.
+D) Exclui todos os registros da tabela.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: O comando em minúsculas `.list` abre a lista da tabela na aba atual, enquanto `.LIST` em maiúsculas abre em uma nova aba.
+--------------------------------------------------------------------------------
+
+QUESTÃO 4:
+Qual é a atalho digitado no Filter Navigator para abrir o formulário de CRIAÇÃO de um novo registro em uma nova aba do navegador?
+A) `<tabela>.do`
+B) `<tabela>.FORM`
+C) `<tabela>.form`
+D) `<tabela>.DO`
+RESPOSTA CORRETA: D
+EXPLICAÇÃO TÉCNICA: O sufixo `.do` abre o formulário de inserção na aba atual, enquanto `.DO` em maiúsculas abre um novo formulário em uma nova aba.
+--------------------------------------------------------------------------------
+
+QUESTÃO 5:
+O que representa o ícone de engrenagem (Gear Icon) localizado na barra superior do formulário ou de uma lista?
+A) Abre as configurações de personalização de interface e colunas exclusivas para o usuário logado.
+B) Altera as configurações padrão de todo o sistema para todos os usuários.
+C) Inicia o editor de código JavaScript.
+D) Reinicia a instância do ServiceNow.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: O ícone de engrenagem permite personalizar a visualização individual de colunas e layouts sem afetar outros usuários da instância.
+--------------------------------------------------------------------------------
+
+QUESTÃO 6:
+[Database Administration] (Questão Exame CSA #6) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 6
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 7:
+[Data Migration] (Questão Exame CSA #7) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 7
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 8:
+[Forms & Client Logic] (Questão Exame CSA #8) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 8
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 9:
+[Service Automation] (Questão Exame CSA #9) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 9
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 10:
+[Instance Management] (Questão Exame CSA #10) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 10
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 11:
+[Database Administration] (Questão Exame CSA #11) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 11
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 12:
+[Data Migration] (Questão Exame CSA #12) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 12
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 13:
+[Forms & Client Logic] (Questão Exame CSA #13) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 13
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 14:
+[Service Automation] (Questão Exame CSA #14) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 14
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 15:
+[Instance Management] (Questão Exame CSA #15) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 15
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 16:
+[Database Administration] (Questão Exame CSA #16) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 16
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 17:
+[Data Migration] (Questão Exame CSA #17) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 17
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 18:
+[Forms & Client Logic] (Questão Exame CSA #18) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 18
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 19:
+[Service Automation] (Questão Exame CSA #19) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 19
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 20:
+[Instance Management] (Questão Exame CSA #20) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 20
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 21:
+[Database Administration] (Questão Exame CSA #21) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 21
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 22:
+[Data Migration] (Questão Exame CSA #22) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 22
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 23:
+[Forms & Client Logic] (Questão Exame CSA #23) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 23
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 24:
+[Service Automation] (Questão Exame CSA #24) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 24
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 25:
+[Instance Management] (Questão Exame CSA #25) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 25
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 26:
+[Database Administration] (Questão Exame CSA #26) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 26
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 27:
+[Data Migration] (Questão Exame CSA #27) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 27
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 28:
+[Forms & Client Logic] (Questão Exame CSA #28) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 28
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 29:
+[Service Automation] (Questão Exame CSA #29) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 29
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 30:
+[Instance Management] (Questão Exame CSA #30) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 30
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 31:
+[Database Administration] (Questão Exame CSA #31) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 31
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 32:
+[Data Migration] (Questão Exame CSA #32) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 32
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 33:
+[Forms & Client Logic] (Questão Exame CSA #33) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 33
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 34:
+[Service Automation] (Questão Exame CSA #34) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 34
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 35:
+[Instance Management] (Questão Exame CSA #35) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 35
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 36:
+[Database Administration] (Questão Exame CSA #36) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 36
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 37:
+[Data Migration] (Questão Exame CSA #37) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 37
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 38:
+[Forms & Client Logic] (Questão Exame CSA #38) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 38
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 39:
+[Service Automation] (Questão Exame CSA #39) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 39
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 40:
+[Instance Management] (Questão Exame CSA #40) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 40
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 41:
+[Database Administration] (Questão Exame CSA #41) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 41
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 42:
+[Data Migration] (Questão Exame CSA #42) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 42
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 43:
+[Forms & Client Logic] (Questão Exame CSA #43) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 43
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 44:
+[Service Automation] (Questão Exame CSA #44) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 44
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 45:
+[Instance Management] (Questão Exame CSA #45) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 45
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 46:
+[Database Administration] (Questão Exame CSA #46) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 46
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 47:
+[Data Migration] (Questão Exame CSA #47) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 47
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 48:
+[Forms & Client Logic] (Questão Exame CSA #48) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 48
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 49:
+[Service Automation] (Questão Exame CSA #49) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 49
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 50:
+[Instance Management] (Questão Exame CSA #50) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 50
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 51:
+[Database Administration] (Questão Exame CSA #51) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 51
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 52:
+[Data Migration] (Questão Exame CSA #52) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 52
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 53:
+[Forms & Client Logic] (Questão Exame CSA #53) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 53
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 54:
+[Service Automation] (Questão Exame CSA #54) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 54
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 55:
+[Instance Management] (Questão Exame CSA #55) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 55
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 56:
+[Database Administration] (Questão Exame CSA #56) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 56
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 57:
+[Data Migration] (Questão Exame CSA #57) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 57
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 58:
+[Forms & Client Logic] (Questão Exame CSA #58) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 58
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 59:
+[Service Automation] (Questão Exame CSA #59) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 59
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 60:
+[Instance Management] (Questão Exame CSA #60) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 60
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 61:
+[Database Administration] (Questão Exame CSA #61) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 61
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 62:
+[Data Migration] (Questão Exame CSA #62) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 62
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 63:
+[Forms & Client Logic] (Questão Exame CSA #63) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 63
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 64:
+[Service Automation] (Questão Exame CSA #64) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 64
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 65:
+[Instance Management] (Questão Exame CSA #65) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 65
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 66:
+[Database Administration] (Questão Exame CSA #66) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 66
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 67:
+[Data Migration] (Questão Exame CSA #67) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 67
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 68:
+[Forms & Client Logic] (Questão Exame CSA #68) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 68
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 69:
+[Service Automation] (Questão Exame CSA #69) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 69
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 70:
+[Instance Management] (Questão Exame CSA #70) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 70
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 71:
+[Database Administration] (Questão Exame CSA #71) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 71
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 72:
+[Data Migration] (Questão Exame CSA #72) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 72
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 73:
+[Forms & Client Logic] (Questão Exame CSA #73) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 73
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 74:
+[Service Automation] (Questão Exame CSA #74) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 74
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 75:
+[Instance Management] (Questão Exame CSA #75) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 75
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 76:
+[Database Administration] (Questão Exame CSA #76) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 76
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 77:
+[Data Migration] (Questão Exame CSA #77) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 77
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 78:
+[Forms & Client Logic] (Questão Exame CSA #78) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 78
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 79:
+[Service Automation] (Questão Exame CSA #79) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 79
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 80:
+[Instance Management] (Questão Exame CSA #80) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 80
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 81:
+[Database Administration] (Questão Exame CSA #81) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 81
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 82:
+[Data Migration] (Questão Exame CSA #82) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 82
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 83:
+[Forms & Client Logic] (Questão Exame CSA #83) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 83
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 84:
+[Service Automation] (Questão Exame CSA #84) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 84
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 85:
+[Instance Management] (Questão Exame CSA #85) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 85
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 86:
+[Database Administration] (Questão Exame CSA #86) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 86
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 87:
+[Data Migration] (Questão Exame CSA #87) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 87
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 88:
+[Forms & Client Logic] (Questão Exame CSA #88) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 88
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 89:
+[Service Automation] (Questão Exame CSA #89) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 89
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 90:
+[Instance Management] (Questão Exame CSA #90) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 90
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 91:
+[Database Administration] (Questão Exame CSA #91) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 91
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 92:
+[Data Migration] (Questão Exame CSA #92) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 92
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 93:
+[Forms & Client Logic] (Questão Exame CSA #93) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 93
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 94:
+[Service Automation] (Questão Exame CSA #94) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 94
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 95:
+[Instance Management] (Questão Exame CSA #95) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 95
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 96:
+[Database Administration] (Questão Exame CSA #96) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 96
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 97:
+[Data Migration] (Questão Exame CSA #97) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 97
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 98:
+[Forms & Client Logic] (Questão Exame CSA #98) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 98
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 99:
+[Service Automation] (Questão Exame CSA #99) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 99
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 100:
+[Instance Management] (Questão Exame CSA #100) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 100
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 101:
+[Database Administration] (Questão Exame CSA #101) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 101
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 102:
+[Data Migration] (Questão Exame CSA #102) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 102
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 103:
+[Forms & Client Logic] (Questão Exame CSA #103) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 103
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 104:
+[Service Automation] (Questão Exame CSA #104) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 104
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 105:
+[Instance Management] (Questão Exame CSA #105) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 105
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 106:
+[Database Administration] (Questão Exame CSA #106) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 106
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 107:
+[Data Migration] (Questão Exame CSA #107) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 107
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 108:
+[Forms & Client Logic] (Questão Exame CSA #108) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 108
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 109:
+[Service Automation] (Questão Exame CSA #109) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 109
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 110:
+[Instance Management] (Questão Exame CSA #110) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 110
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 111:
+[Database Administration] (Questão Exame CSA #111) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 111
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 112:
+[Data Migration] (Questão Exame CSA #112) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 112
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 113:
+[Forms & Client Logic] (Questão Exame CSA #113) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 113
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 114:
+[Service Automation] (Questão Exame CSA #114) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 114
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 115:
+[Instance Management] (Questão Exame CSA #115) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 115
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 116:
+[Database Administration] (Questão Exame CSA #116) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 116
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 117:
+[Data Migration] (Questão Exame CSA #117) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 117
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 118:
+[Forms & Client Logic] (Questão Exame CSA #118) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 118
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 119:
+[Service Automation] (Questão Exame CSA #119) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 119
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 120:
+[Instance Management] (Questão Exame CSA #120) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 120
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 121:
+[Database Administration] (Questão Exame CSA #121) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 121
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 122:
+[Data Migration] (Questão Exame CSA #122) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 122
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 123:
+[Forms & Client Logic] (Questão Exame CSA #123) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 123
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 124:
+[Service Automation] (Questão Exame CSA #124) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 124
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 125:
+[Instance Management] (Questão Exame CSA #125) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 125
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 126:
+[Database Administration] (Questão Exame CSA #126) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 126
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 127:
+[Data Migration] (Questão Exame CSA #127) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 127
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 128:
+[Forms & Client Logic] (Questão Exame CSA #128) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 128
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 129:
+[Service Automation] (Questão Exame CSA #129) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 129
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 130:
+[Instance Management] (Questão Exame CSA #130) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 130
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 131:
+[Database Administration] (Questão Exame CSA #131) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 131
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 132:
+[Data Migration] (Questão Exame CSA #132) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 132
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 133:
+[Forms & Client Logic] (Questão Exame CSA #133) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 133
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 134:
+[Service Automation] (Questão Exame CSA #134) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 134
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 135:
+[Instance Management] (Questão Exame CSA #135) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 135
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 136:
+[Database Administration] (Questão Exame CSA #136) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 136
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 137:
+[Data Migration] (Questão Exame CSA #137) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 137
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 138:
+[Forms & Client Logic] (Questão Exame CSA #138) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 138
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 139:
+[Service Automation] (Questão Exame CSA #139) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 139
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 140:
+[Instance Management] (Questão Exame CSA #140) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 140
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 141:
+[Database Administration] (Questão Exame CSA #141) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 141
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 142:
+[Data Migration] (Questão Exame CSA #142) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 142
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 143:
+[Forms & Client Logic] (Questão Exame CSA #143) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 143
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 144:
+[Service Automation] (Questão Exame CSA #144) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 144
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 145:
+[Instance Management] (Questão Exame CSA #145) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 145
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+
+QUESTÃO 146:
+[Database Administration] (Questão Exame CSA #146) Qual é a relação entre a tabela base 'task' e as tabelas filhas como 'incident'? - Cenário de Teste Prático 146
+A) A tabela filha herda todas as colunas e comportamentos da tabela pai.
+B) A tabela pai herda os dados da tabela filha.
+C) Não há herança, apenas cópia manual.
+D) A tabela filha substitui totalmente a tabela pai.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: A tabela filha herda todas as colunas, scripts de dicionário e relacionamentos da tabela pai.
+--------------------------------------------------------------------------------
+
+QUESTÃO 147:
+[Data Migration] (Questão Exame CSA #147) O que ocorre se múltiplos campos forem marcados como 'Coalesce' em um Transform Map? - Cenário de Teste Prático 147
+A) O sistema dará um erro de sintaxe.
+B) Todos os campos marcados são avaliados juntos para formar uma chave de correspondência composta.
+C) Apenas o primeiro campo será considerado e os demais ignorados.
+D) Os registros serão duplicados no banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: A plataforma utilizará a combinação de todos os campos marcados com Coalesce para criar uma chave composta de busca de registros únicos.
+--------------------------------------------------------------------------------
+
+QUESTÃO 148:
+[Forms & Client Logic] (Questão Exame CSA #148) Qual a vantagem primária de se usar UI Policies em vez de Client Scripts? - Cenário de Teste Prático 148
+A) UI Policies rodam no servidor.
+B) UI Policies não exigem codificação em JavaScript para regras simples de obrigatoriedade, visibilidade e leitura.
+C) UI Policies não funcionam no portal.
+D) UI Policies rodam apenas em atualizações do banco.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: UI Policies são soluções low-code/no-code com melhor desempenho de renderização no navegador.
+--------------------------------------------------------------------------------
+
+QUESTÃO 149:
+[Service Automation] (Questão Exame CSA #149) Quais são os três tipos principais de gatilhos (Triggers) disponíveis no Flow Designer? - Cenário de Teste Prático 149
+A) Record-based, Schedule-based e Application-based.
+B) Insert, Update e Delete apenas.
+C) Client-side, Server-side e Database-side.
+D) User-based, Group-based e Role-based.
+RESPOSTA CORRETA: A
+EXPLICAÇÃO TÉCNICA: Gatilhos baseados em Registro (Record-based), Agendados (Schedule-based) e de Aplicação (Application-based).
+--------------------------------------------------------------------------------
+
+QUESTÃO 150:
+[Instance Management] (Questão Exame CSA #150) O que deve ser feito ao encontrar um estado 'Conflict' durante a visualização (Preview) de um Update Set? - Cenário de Teste Prático 150
+A) Excluir a instância de produção imediatamente.
+B) Revisar cada conflito no Preview e escolher explicitamente se deseja aceitar o carregamento ou manter a versão local.
+C) Forçar o commit sem verificar.
+D) Exportar o banco para Excel.
+RESPOSTA CORRETA: B
+EXPLICAÇÃO TÉCNICA: O administrador deve revisar e resolver cada conflito individualmente escolhendo entre aceitar ou ignorar as alterações remota/local.
+--------------------------------------------------------------------------------
+

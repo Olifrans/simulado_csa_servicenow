@@ -1,0 +1,154 @@
+# Simulado Oficial - ServiceNow Certified System Administrator (CSA)
+*Organizado com Gabarito Correto e Respostas Detalhadas*
+
+---
+
+## Domínio 1: Database Management & Platform Security (Segurança, ACLs e Tabelas)
+
+### Questão 1
+Qual é a ordem de avaliação correta que a ServiceNow utiliza ao processar as regras de controle de acesso (ACLs)?
+- [ ] A) Campo (Field) $\rightarrow$ Linha (Row) $\rightarrow$ Tabela (Table)
+- [x] **B) Tabela (Table) $\rightarrow$ Linha (Row) $\rightarrow$ Campo (Field)**
+- [ ] C) Linha (Row) $\rightarrow$ Tabela (Table) $\rightarrow$ Campo (Field)
+- [ ] D) Tabela (Table) $\rightarrow$ Campo (Field) $\rightarrow$ Linha (Row)
+
+> **Resposta Correta: B**
+> **Explicação:** A plataforma avalia primeiro o nível da Tabela (Table), depois valida a restrição por registro/linha (Row) e, finalmente, avalia o campo específico (Field). Se o acesso for negado no nível superior, a verificação é interrompida.
+
+---
+
+### Questão 2
+Um administrador do sistema precisa criar uma nova tabela personalizada para armazenar dados de projetos. Qual prefixo é obrigatoriamente utilizado e gerado pela plataforma para tabelas customizadas criadas no escopo global?
+- [ ] A) `sys_`
+- [x] **B) `u_`**
+- [ ] C) `x_`
+- [ ] D) `custom_`
+
+> **Resposta Correta: B**
+> **Explicação:** O prefixo `u_` é atribuído a tabelas criadas por usuários no escopo Global. O prefixo `x_` é reservado para tabelas de aplicações escopadas (*Scoped Applications*).
+
+---
+
+### Questão 3
+Quais são as principais características da role `security_administrator` na plataforma ServiceNow?
+- [ ] A) Permite apenas criar usuários e redefinir senhas no sistema.
+- [x] **B) É uma role de privilégio elevado (*elevation of privileges*) necessária para modificar ACLs e configurações sensíveis de segurança, sendo concedida apenas temporariamente por sessão.**
+- [ ] C) Concede acesso irrestrito e permanente a todas as tabelas de dados clínicos e financeiros sem necessidade de elevação.
+- [ ] D) Permite gerenciar apenas fluxos de trabalho e integrações via Web Services.
+
+> **Resposta Correta: B**
+> **Explicação:** A role `security_administrator` exige uma elevação de privilégio manual na sessão (*Elevate Roles*) para permitir modificações em regras de acesso sensíveis e ACLs.
+
+---
+
+### Questão 4
+O que a funcionalidade/role de Impersonator (`impersonator`) permite que um administrador faça na instância?
+- [ ] A) Criar cópias exatas de instâncias de produção para ambientes de teste.
+- [x] **B) Assumir temporariamente a identidade de outro usuário para testar o comportamento de ACLs, portais e visibilidade de dados sob a perspectiva daquele usuário.**
+- [ ] C) Apagar registros duplicados de auditoria em massa.
+- [ ] D) Modificar o código-fonte de plugins nativos da plataforma.
+
+> **Resposta Correta: B**
+> **Explicação:** A função *Impersonate* permite ver a plataforma exatamente como o usuário selecionado a enxerga, ideal para testes de visibilidade e regras de acesso.
+
+---
+
+### Questão 5
+As tabelas `incident`, `problem` e `change_request` herdam campos e comportamentos de qual tabela principal do framework de ITIL na ServiceNow?
+- [ ] A) `cmdb_ci`
+- [x] **B) `task`**
+- [ ] C) `sys_object`
+- [ ] D) `kb_knowledge`
+
+> **Resposta Correta: B**
+> **Explicação:** A tabela `task` é a tabela pai raiz para todos os processos de trabalho e ITSM (`incident`, `problem`, `change_request`, `sc_task`, etc.).
+
+---
+
+## Domínio 2: Self-Service, Portals & Service Catalog (Automação e Portais)
+
+### Questão 6
+Quando um usuário final solicita um produto ou item de catálogo (*Catalog Item*) através do Service Catalog, quais são as tabelas principais e a ordem correta em que os registros são gerados automaticamente?
+- [ ] A) `incident` $\rightarrow$ `problem` $\rightarrow$ `change_request`
+- [x] **B) `sc_request` (Request) $\rightarrow$ `sc_req_item` (Requested Item) $\rightarrow$ `sc_task` (Catalog Task)**
+- [ ] C) `task_sla` $\rightarrow$ `sys_email` $\rightarrow$ `sc_task`
+- [ ] D) `cmdb_ci_service` $\rightarrow$ `kb_knowledge` $\rightarrow$ `sc_request`
+
+> **Resposta Correta: B**
+> **Explicação:** A ordem hierárquica e de geração é: Requisição Geral (`sc_request`), Item Solicitado (`sc_req_item`) e Tarefa de Atendimento (`sc_task`).
+
+---
+
+### Questão 7
+O que diferencia o acesso e o escopo do Self-Service tradicional em relação ao Employee Center / Employee Portal na ServiceNow?
+- [ ] A) O Self-Service é restrito apenas a desenvolvedores, enquanto o Employee Portal é para usuários comuns.
+- [x] **B) O Employee Portal unifica múltiplos serviços (RH, TI, Jurídico, Facilities) em uma experiência de portal moderna, enquanto o Self-Service foca nas funcionalidades padrão de navegação de incidentes e base de conhecimento básicas.**
+- [ ] C) Não há diferença técnica; são exatamente a mesma interface com nomes comerciais distintos.
+- [ ] D) O Employee Portal roda fora da plataforma ServiceNow, via integração externa.
+
+> **Resposta Correta: B**
+> **Explicação:** O Employee Center substitui portais legados consolidando uma experiência de atendimento multi-departamental unificada.
+
+---
+
+### Questão 8
+Onde os Grupos (`Groups`) de usuários são armazenados estruturalmente na base de dados da plataforma?
+- [ ] A) `sys_user`
+- [x] **B) `sys_user_group`**
+- [ ] C) `sys_user_has_role`
+- [ ] D) `core_company`
+
+> **Resposta Correta: B**
+> **Explicação:** A tabela `sys_user_group` guarda as definições dos grupos de usuários na plataforma.
+
+---
+
+## Domínio 3: Instance Configuration, Forms & Client Logic
+
+### Questão 9
+Ao customizar e configurar o design de formulários utilizando o Form Builder / Form Designer, qual é a melhor prática recomendada pela ServiceNow para tornar campos obrigatórios (*mandatory*), ocultos (*hidden*) ou somente leitura (*read-only*)?
+- [ ] A) Utilizar sempre Client Scripts customizados em JavaScript puro.
+- [x] **B) Utilizar preferencialmente UI Policies (Políticas de Interface), pois permitem gerenciar esses estados sem código (low-code) de forma mais segura e performática.**
+- [ ] C) Alterar diretamente o dicionário de dados de cada campo (`sys_dictionary`).
+- [ ] D) Escrever Business Rules síncronas no banco de dados.
+
+> **Resposta Correta: B**
+> **Explicação:** UI Policies são recomendadas pela ServiceNow para lógicas dinâmicas de interface sem a necessidade de codificação client-side complexa.
+
+---
+
+### Questão 10
+Qual é a principal diferença de escopo e execução entre Business Rules, Client Scripts e UI Policies?
+- [ ] A) Todas rodam simultaneamente no navegador do usuário (Client-side).
+- [x] **B) Client Scripts e UI Policies rodam no cliente (browser), enquanto Business Rules rodam no servidor (server-side) em resposta a operações de banco de dados (Insert/Update/Delete/Query).**
+- [ ] C) Business Rules são usadas exclusivamente para mudar a cor de campos nos formulários.
+- [ ] D) UI Policies rodam obrigatoriamente no banco de dados antes da validação das ACLs.
+
+> **Resposta Correta: B**
+> **Explicação:** Client Scripts e UI Policies afetam a experiência visual do usuário no navegador; Business Rules executam lógica no servidor ao interagir com o banco de dados.
+
+---
+
+## Domínio 4: Data Integration & Migration (Import Sets, Transform Maps e CMDB)
+
+### Questão 11
+Qual é a ordem correta do fluxo de importação de dados para dentro da plataforma ServiceNow usando o mecanismo de Import Sets?
+- [ ] A) Transform Map $\rightarrow$ Target Table $\rightarrow$ Load Data $\rightarrow$ Import Set Table
+- [x] **B) Load Data (Import Set Table) $\rightarrow$ Criação/Seleção do Transform Map $\rightarrow$ Execução da Transformação (Target Table)**
+- [ ] C) Target Table $\rightarrow$ Transform Map $\rightarrow$ Data Cleansing $\rightarrow$ Load Data
+- [ ] D) Export Set $\rightarrow$ Transform Map $\rightarrow$ CMDB Sync
+
+> **Resposta Correta: B**
+> **Explicação:** O fluxo correto carrega primeiro os dados para uma tabela temporária (`Import Set Table`), mapeia as colunas via `Transform Map` e executa para a tabela de destino (`Target Table`).
+
+---
+
+### Questão 12
+O que representam os Configuration Items (CIs) e como o Dependency Map os utiliza na plataforma?
+- [x] **A) CIs são componentes de infraestrutura ou serviços monitorados, e o Dependency Map exibe visualmente as relações de dependência e impacto entre eles.**
+- [ ] B) CIs são arquivos de log de erros gerados pelo sistema operacional Linux da instância.
+- [ ] C) CIs são regras de segurança de rede aplicadas via firewall virtual.
+- [ ] D) CIs representam exclusivamente contas de usuários inativas no Active Directory.
+
+> **Resposta Correta: A**
+> **Explicação:** No CMDB, CIs são os ativos e serviços de TI, e o Dependency Map permite visualizar a estrutura de interdependência entre eles para análise de impacto.

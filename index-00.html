@@ -1,0 +1,1101 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simulado ServiceNow CSA | Estudo Inteligente</title>
+<style>
+  :root {
+    --primary: #81B5A1;
+    --primary-dark: #5E9A84;
+    --accent: #FF6B6B;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --bg: #0f172a;
+    --bg-2: #1e293b;
+    --card: rgba(255, 255, 255, 0.04);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
+    --shadow: 0 10px 40px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 20% 30%, rgba(129,181,161,0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(99,102,241,0.1) 0%, transparent 40%);
+    z-index: -1;
+    animation: bgShift 20s ease infinite;
+  }
+
+  @keyframes bgShift {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(-5%, -5%); }
+  }
+
+  .container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+
+  header {
+    text-align: center;
+    padding: 30px 20px 20px;
+    position: relative;
+  }
+
+  .logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 10px;
+  }
+
+  .logo-icon {
+    width: 48px;
+    height: 48px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+    box-shadow: 0 8px 20px rgba(129,181,161,0.3);
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    margin-top: 6px;
+  }
+
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+    gap: 12px;
+    margin: 20px 0;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 14px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s;
+  }
+
+  .stat-card:hover { transform: translateY(-3px); }
+
+  .stat-value {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+
+  .stat-label {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-top: 4px;
+  }
+
+  .progress-wrapper {
+    margin: 20px 0;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .progress-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: var(--text-muted);
+  }
+
+  .progress-bar {
+    height: 8px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    border-radius: 10px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(129,181,161,0.5);
+  }
+
+  .domain-filter {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+  }
+
+  .filter-btn {
+    padding: 8px 16px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.85rem;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+  .filter-btn.active {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    border-color: transparent;
+    box-shadow: 0 4px 12px rgba(129,181,161,0.3);
+  }
+
+  .question-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 28px;
+    margin: 20px 0;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .question-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  .question-number {
+    font-size: 0.8rem;
+    color: var(--primary);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  .question-domain {
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    background: rgba(129,181,161,0.15);
+    color: var(--primary);
+    border-radius: 12px;
+    border: 1px solid rgba(129,181,161,0.3);
+  }
+
+  .question-text {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 24px;
+    line-height: 1.7;
+  }
+
+  .options { display: flex; flex-direction: column; gap: 10px; }
+
+  .option {
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.03);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    font-size: 0.95rem;
+  }
+
+  .option:hover:not(.disabled) {
+    border-color: var(--primary);
+    background: rgba(129,181,161,0.08);
+    transform: translateX(4px);
+  }
+
+  .option-letter {
+    min-width: 28px;
+    height: 28px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--primary);
+    flex-shrink: 0;
+  }
+
+  .option.correct {
+    border-color: var(--success);
+    background: rgba(34,197,94,0.1);
+    animation: pulse 0.5s;
+  }
+
+  .option.correct .option-letter {
+    background: var(--success);
+    color: #fff;
+  }
+
+  .option.incorrect {
+    border-color: var(--danger);
+    background: rgba(239,68,68,0.1);
+    animation: shake 0.4s;
+  }
+
+  .option.incorrect .option-letter {
+    background: var(--danger);
+    color: #fff;
+  }
+
+  .option.disabled { cursor: not-allowed; }
+
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.02); }
+  }
+
+  @keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-6px); }
+    75% { transform: translateX(6px); }
+  }
+
+  .feedback {
+    margin-top: 20px;
+    padding: 18px;
+    border-radius: 14px;
+    display: none;
+    animation: fadeIn 0.4s;
+  }
+
+  .feedback.show { display: block; }
+
+  .feedback.correct {
+    background: rgba(34,197,94,0.1);
+    border: 1px solid rgba(34,197,94,0.3);
+  }
+
+  .feedback.incorrect {
+    background: rgba(239,68,68,0.1);
+    border: 1px solid rgba(239,68,68,0.3);
+  }
+
+  .feedback-title {
+    font-weight: 700;
+    margin-bottom: 8px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .feedback.correct .feedback-title { color: var(--success); }
+  .feedback.incorrect .feedback-title { color: var(--danger); }
+
+  .feedback-text { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+
+  .actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    padding: 12px 22px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: all 0.2s;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff;
+    box-shadow: 0 4px 14px rgba(129,181,161,0.3);
+  }
+
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(129,181,161,0.4); }
+
+  .btn-secondary {
+    background: rgba(255,255,255,0.06);
+    color: var(--text);
+    border: 1px solid var(--card-border);
+  }
+
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+  .btn-danger {
+    background: rgba(239,68,68,0.15);
+    color: var(--danger);
+    border: 1px solid rgba(239,68,68,0.3);
+  }
+
+  .btn-danger:hover { background: rgba(239,68,68,0.25); }
+
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .nav-controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 16px;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  .question-dots {
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin: 20px 0;
+    padding: 14px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+  }
+
+  .dot {
+    width: 22px;
+    height: 22px;
+    border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    cursor: pointer;
+    transition: all 0.2s;
+    border: 1px solid transparent;
+    font-size: 0.65rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+  }
+
+  .dot:hover { transform: scale(1.15); }
+
+  .dot.current {
+    background: var(--primary);
+    color: #fff;
+    box-shadow: 0 0 10px rgba(129,181,161,0.5);
+  }
+
+  .dot.correct { background: var(--success); color: #fff; }
+  .dot.incorrect { background: var(--danger); color: #fff; }
+  .dot.flagged { border-color: var(--warning); }
+
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+    padding: 20px;
+    backdrop-filter: blur(8px);
+  }
+
+  .modal-overlay.show { display: flex; animation: fadeIn 0.3s; }
+
+  .modal {
+    background: var(--bg-2);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 30px;
+    max-width: 500px;
+    width: 100%;
+    text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  .modal-icon {
+    font-size: 4rem;
+    margin-bottom: 16px;
+  }
+
+  .modal h2 {
+    font-size: 1.6rem;
+    margin-bottom: 10px;
+    background: linear-gradient(135deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .modal p { color: var(--text-muted); margin-bottom: 20px; }
+
+  .score-display {
+    font-size: 3rem;
+    font-weight: 800;
+    color: var(--primary);
+    margin: 16px 0;
+  }
+
+  .score-label { color: var(--text-muted); font-size: 0.9rem; }
+
+  footer {
+    text-align: center;
+    padding: 30px 20px;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+  }
+
+  @media (max-width: 600px) {
+    .question-card { padding: 20px; }
+    .question-text { font-size: 1rem; }
+    .option { padding: 12px 14px; font-size: 0.9rem; }
+    .stat-card { padding: 10px; }
+    .stat-value { font-size: 1.3rem; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="logo">
+      <div class="logo-icon">☁️</div>
+      <div>
+        <h1>Simulado ServiceNow CSA</h1>
+        <p class="subtitle">Certified System Administrator • Estudo Inteligente</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="stats-bar">
+    <div class="stat-card">
+      <div class="stat-value" id="statAnswered">0</div>
+      <div class="stat-label">Respondidas</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statCorrect">0</div>
+      <div class="stat-label">Corretas</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statPercent">0%</div>
+      <div class="stat-label">Aproveitamento</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-value" id="statFlagged">0</div>
+      <div class="stat-label">Revisão</div>
+    </div>
+  </div>
+
+  <div class="progress-wrapper">
+    <div class="progress-header">
+      <span id="progressText">Questão 1 de 20</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div class="progress-bar">
+      <div class="progress-fill" id="progressFill" style="width: 0%"></div>
+    </div>
+  </div>
+
+  <div class="domain-filter" id="domainFilter"></div>
+
+  <div class="question-dots" id="questionDots"></div>
+
+  <div class="question-card" id="questionCard">
+    <div class="question-meta">
+      <span class="question-number" id="qNumber">Questão 1</span>
+      <span class="question-domain" id="qDomain">Domínio</span>
+    </div>
+    <div class="question-text" id="qText"></div>
+    <div class="options" id="qOptions"></div>
+    <div class="feedback" id="qFeedback">
+      <div class="feedback-title" id="feedbackTitle"></div>
+      <div class="feedback-text" id="feedbackText"></div>
+    </div>
+    <div class="nav-controls">
+      <button class="btn btn-secondary" id="btnPrev">← Anterior</button>
+      <button class="btn btn-secondary" id="btnFlag">🚩 Marcar</button>
+      <button class="btn btn-primary" id="btnNext">Próxima →</button>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:20px;">
+    <button class="btn btn-secondary" id="btnReview">📚 Apenas questões erradas</button>
+    <button class="btn btn-danger" id="btnReset">🔄 Resetar progresso</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-icon" id="modalIcon">🎉</div>
+    <h2 id="modalTitle">Parabéns!</h2>
+    <p id="modalText">Você concluiu o simulado.</p>
+    <div class="score-display" id="modalScore">0%</div>
+    <div class="score-label" id="modalScoreLabel">de aproveitamento</div>
+    <div style="margin-top:20px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="closeModal()">Continuar estudando</button>
+      <button class="btn btn-danger" onclick="resetProgress()">Recomeçar</button>
+    </div>
+  </div>
+</div>
+
+<footer>
+  Desenvolvido para estudos • ServiceNow CSA 2026 • Dados salvos localmente no seu navegador
+</footer>
+
+<script>
+const questions = [
+  {
+    id: 1,
+    domain: "Database & Security",
+    text: "Qual é a ordem de avaliação correta que a ServiceNow utiliza ao processar as regras de controle de acesso (ACLs)?",
+    options: [
+      "Campo (Field) → Linha (Row) → Tabela (Table)",
+      "Tabela (Table) → Linha (Row) → Campo (Field)",
+      "Linha (Row) → Tabela (Table) → Campo (Field)",
+      "Tabela (Table) → Campo (Field) → Linha (Row)"
+    ],
+    correct: 1,
+    explanation: "A plataforma avalia primeiro o nível da Tabela (Table), depois valida a restrição por registro/linha (Row) e, finalmente, avalia o campo específico (Field). Se o acesso for negado no nível superior, a verificação é interrompida."
+  },
+  {
+    id: 2,
+    domain: "Database & Security",
+    text: "Um administrador precisa criar uma nova tabela personalizada no escopo global. Qual prefixo é obrigatoriamente utilizado pela plataforma?",
+    options: ["sys_", "u_", "x_", "custom_"],
+    correct: 1,
+    explanation: "O prefixo `u_` é atribuído a tabelas criadas por usuários no escopo Global. O prefixo `x_` é reservado para tabelas de aplicações escopadas (Scoped Applications)."
+  },
+  {
+    id: 3,
+    domain: "Database & Security",
+    text: "Quais são as principais características da role `security_administrator`?",
+    options: [
+      "Permite apenas criar usuários e redefinir senhas.",
+      "É uma role de privilégio elevado necessária para modificar ACLs, concedida apenas temporariamente por sessão.",
+      "Concede acesso irrestrito e permanente a todas as tabelas.",
+      "Permite gerenciar apenas fluxos de trabalho e integrações."
+    ],
+    correct: 1,
+    explanation: "A role `security_administrator` exige elevação de privilégio manual (Elevate Roles) para permitir modificações em regras de acesso sensíveis e ACLs."
+  },
+  {
+    id: 4,
+    domain: "Database & Security",
+    text: "O que a funcionalidade Impersonate permite que um administrador faça?",
+    options: [
+      "Criar cópias exatas de instâncias de produção.",
+      "Assumir temporariamente a identidade de outro usuário para testar ACLs e visibilidade.",
+      "Apagar registros duplicados em massa.",
+      "Modificar o código-fonte de plugins nativos."
+    ],
+    correct: 1,
+    explanation: "A função Impersonate permite ver a plataforma exatamente como o usuário selecionado a enxerga, ideal para testes de visibilidade e regras de acesso."
+  },
+  {
+    id: 5,
+    domain: "Database & Security",
+    text: "As tabelas `incident`, `problem` e `change_request` herdam campos e comportamentos de qual tabela principal?",
+    options: ["cmdb_ci", "task", "sys_object", "kb_knowledge"],
+    correct: 1,
+    explanation: "A tabela `task` é a tabela pai raiz para todos os processos de trabalho e ITSM (incident, problem, change_request, sc_task, etc.)."
+  },
+  {
+    id: 6,
+    domain: "Service Catalog & Portals",
+    text: "Quando um usuário solicita um item do Service Catalog, qual é a ordem correta de geração dos registros?",
+    options: [
+      "incident → problem → change_request",
+      "sc_request → sc_req_item → sc_task",
+      "task_sla → sys_email → sc_task",
+      "cmdb_ci_service → kb_knowledge → sc_request"
+    ],
+    correct: 1,
+    explanation: "A ordem hierárquica é: Requisição Geral (sc_request), Item Solicitado (sc_req_item) e Tarefa de Atendimento (sc_task)."
+  },
+  {
+    id: 7,
+    domain: "Service Catalog & Portals",
+    text: "O que diferencia o Self-Service tradicional do Employee Center / Employee Portal?",
+    options: [
+      "O Self-Service é restrito apenas a desenvolvedores.",
+      "O Employee Portal unifica múltiplos serviços (RH, TI, Jurídico) em uma experiência moderna, enquanto o Self-Service foca em funcionalidades padrão.",
+      "Não há diferença técnica; são a mesma interface.",
+      "O Employee Portal roda fora da plataforma ServiceNow."
+    ],
+    correct: 1,
+    explanation: "O Employee Center substitui portais legados consolidando uma experiência de atendimento multi-departamental unificada."
+  },
+  {
+    id: 8,
+    domain: "Service Catalog & Portals",
+    text: "Onde os Grupos de usuários são armazenados estruturalmente na plataforma?",
+    options: ["sys_user", "sys_user_group", "sys_user_has_role", "core_company"],
+    correct: 1,
+    explanation: "A tabela `sys_user_group` guarda as definições dos grupos de usuários na plataforma."
+  },
+  {
+    id: 9,
+    domain: "Configuration & Forms",
+    text: "Qual a melhor prática recomendada pela ServiceNow para tornar campos obrigatórios, ocultos ou somente leitura no Form Designer?",
+    options: [
+      "Utilizar sempre Client Scripts em JavaScript puro.",
+      "Utilizar preferencialmente UI Policies, pois permitem gerenciar esses estados sem código.",
+      "Alterar diretamente o dicionário de dados de cada campo.",
+      "Escrever Business Rules síncronas no banco de dados."
+    ],
+    correct: 1,
+    explanation: "UI Policies são recomendadas para lógicas dinâmicas de interface sem a necessidade de codificação client-side complexa."
+  },
+  {
+    id: 10,
+    domain: "Configuration & Forms",
+    text: "Qual é a principal diferença de escopo e execução entre Business Rules, Client Scripts e UI Policies?",
+    options: [
+      "Todas rodam simultaneamente no navegador.",
+      "Client Scripts e UI Policies rodam no cliente (browser), enquanto Business Rules rodam no servidor.",
+      "Business Rules são usadas exclusivamente para mudar a cor de campos.",
+      "UI Policies rodam obrigatoriamente no banco antes das ACLs."
+    ],
+    correct: 1,
+    explanation: "Client Scripts e UI Policies afetam a experiência visual no navegador; Business Rules executam lógica no servidor ao interagir com o banco de dados."
+  },
+  {
+    id: 11,
+    domain: "Data Integration",
+    text: "Qual é a ordem correta do fluxo de importação de dados usando Import Sets?",
+    options: [
+      "Transform Map → Target Table → Load Data → Import Set Table",
+      "Load Data (Import Set Table) → Transform Map → Execução da Transformação (Target Table)",
+      "Target Table → Transform Map → Data Cleansing → Load Data",
+      "Export Set → Transform Map → CMDB Sync"
+    ],
+    correct: 1,
+    explanation: "O fluxo correto carrega primeiro os dados para uma tabela temporária (Import Set Table), mapeia via Transform Map e executa para a Target Table."
+  },
+  {
+    id: 12,
+    domain: "Data Integration",
+    text: "O que representam os Configuration Items (CIs) e como o Dependency Map os utiliza?",
+    options: [
+      "CIs são componentes de infraestrutura ou serviços monitorados, e o Dependency Map exibe visualmente as relações de dependência.",
+      "CIs são arquivos de log de erros do sistema operacional.",
+      "CIs são regras de segurança de rede aplicadas via firewall.",
+      "CIs representam exclusivamente contas de usuários inativas."
+    ],
+    correct: 0,
+    explanation: "No CMDB, CIs são os ativos e serviços de TI, e o Dependency Map permite visualizar a estrutura de interdependência entre eles."
+  },
+  // Novas questões adicionadas
+  {
+    id: 13,
+    domain: "User Administration",
+    text: "Qual tabela armazena a relação entre usuários e roles na plataforma ServiceNow?",
+    options: ["sys_user", "sys_user_role", "sys_user_has_role", "sys_role"],
+    correct: 2,
+    explanation: "A tabela `sys_user_has_role` armazena o relacionamento (muitos-para-muitos) entre usuários e roles. `sys_user_role` armazena as definições das roles."
+  },
+  {
+    id: 14,
+    domain: "User Administration",
+    text: "O que é um 'Group Role' e como ele se diferencia de uma role atribuída diretamente a um usuário?",
+    options: [
+      "Group Role é uma role temporária que expira em 24h.",
+      "Group Role é atribuída a um grupo, e todos os membros herdam automaticamente os privilégios dessa role.",
+      "Group Role só funciona em instâncias de desenvolvimento.",
+      "Group Role é uma role exclusiva para administradores de segurança."
+    ],
+    correct: 1,
+    explanation: "Ao atribuir uma role a um grupo, todos os usuários membros desse grupo herdam automaticamente os privilégios, facilitando a administração em escala."
+  },
+  {
+    id: 15,
+    domain: "Notifications",
+    text: "Qual é o componente responsável por definir QUANDO uma notificação deve ser enviada (condição de disparo)?",
+    options: ["Email Script", "Notification Condition", "Watermark", "Email Layout"],
+    correct: 1,
+    explanation: "A 'Condition' da notificação define quando ela é disparada (ex: quando um campo muda, quando um registro é criado). Email Scripts são usados para conteúdo dinâmico dentro do corpo."
+  },
+  {
+    id: 16,
+    domain: "Reports & Dashboards",
+    text: "Qual a diferença entre um Report e um Dashboard na ServiceNow?",
+    options: [
+      "Report é visual; Dashboard é textual.",
+      "Report é uma visualização individual de dados; Dashboard é uma coleção de múltiplos reports e indicators em uma única tela.",
+      "Dashboard só pode ser usado por administradores.",
+      "Não há diferença; são sinônimos."
+    ],
+    correct: 1,
+    explanation: "Um Dashboard (ou Home Page) é uma página que agrega vários reports, performance analytics e widgets para uma visão consolidada."
+  },
+  {
+    id: 17,
+    domain: "Scripting",
+    text: "Qual objeto do GlideRecord é utilizado para consultar registros de uma tabela no servidor?",
+    options: ["g_form", "g_user", "GlideRecord", "current"],
+    correct: 2,
+    explanation: "`GlideRecord` é a API do lado do servidor para consultas ao banco. `g_form` e `g_user` são APIs de cliente (client-side)."
+  },
+  {
+    id: 18,
+    domain: "Scripting",
+    text: "Em um Business Rule do tipo 'Before', qual objeto representa o registro que está sendo modificado?",
+    options: ["previous", "current", "gs.getUser()", "g_form.getRecord()"],
+    correct: 1,
+    explanation: "O objeto `current` representa o registro que está sendo inserido ou atualizado. `previous` contém os valores antes da modificação."
+  },
+  {
+    id: 19,
+    domain: "Update Sets",
+    text: "O que é um Update Set e qual sua principal função?",
+    options: [
+      "Um backup completo do banco de dados.",
+      "Um conjunto de configurações customizadas que pode ser movido de uma instância para outra (ex: DEV → PROD).",
+      "Um conjunto de usuários com as mesmas permissões.",
+      "Um relatório de auditoria de mudanças."
+    ],
+    correct: 1,
+    explanation: "Update Sets capturam customizações (tabelas, campos, scripts, ACLs, etc.) para promover mudanças entre instâncias de forma controlada."
+  },
+  {
+    id: 20,
+    domain: "Update Sets",
+    text: "Qual tipo de configuração NÃO é capturada automaticamente por um Update Set?",
+    options: [
+      "Business Rules",
+      "Client Scripts",
+      "Dados de registros (ex: um incidente criado)",
+      "UI Policies"
+    ],
+    correct: 2,
+    explanation: "Update Sets capturam CONFIGURAÇÕES (customizações), não DADOS transacionais. Registros de incidentes, usuários, etc., não são movidos via Update Set."
+  }
+];
+
+let state = {
+  currentIndex: 0,
+  answers: {},
+  flagged: new Set(),
+  filter: 'all',
+  reviewMode: false
+};
+
+// Load from localStorage
+function loadState() {
+  const saved = localStorage.getItem('snow_csa_state');
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    state.answers = parsed.answers || {};
+    state.flagged = new Set(parsed.flagged || []);
+  }
+}
+
+function saveState() {
+  localStorage.setItem('snow_csa_state', JSON.stringify({
+    answers: state.answers,
+    flagged: Array.from(state.flagged)
+  }));
+}
+
+function getFilteredQuestions() {
+  let filtered = questions;
+  if (state.filter !== 'all') {
+    filtered = filtered.filter(q => q.domain === state.filter);
+  }
+  if (state.reviewMode) {
+    filtered = filtered.filter(q => state.answers[q.id] && state.answers[q.id].selected !== q.correct);
+  }
+  return filtered;
+}
+
+function renderDomainFilter() {
+  const domains = ['all', ...new Set(questions.map(q => q.domain))];
+  const container = document.getElementById('domainFilter');
+  container.innerHTML = domains.map(d => `
+    <button class="filter-btn ${state.filter === d ? 'active' : ''}" data-domain="${d}">
+      ${d === 'all' ? '📋 Todos' : d}
+    </button>
+  `).join('');
+
+  container.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.filter = btn.dataset.domain;
+      state.currentIndex = 0;
+      state.reviewMode = false;
+      render();
+    });
+  });
+}
+
+function renderDots() {
+  const filtered = getFilteredQuestions();
+  const container = document.getElementById('questionDots');
+  container.innerHTML = filtered.map((q, i) => {
+    let cls = 'dot';
+    if (i === state.currentIndex) cls += ' current';
+    if (state.answers[q.id]) {
+      cls += state.answers[q.id].selected === q.correct ? ' correct' : ' incorrect';
+    }
+    if (state.flagged.has(q.id)) cls += ' flagged';
+    return `<div class="${cls}" data-index="${i}">${i + 1}</div>`;
+  }).join('');
+
+  container.querySelectorAll('.dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      state.currentIndex = parseInt(dot.dataset.index);
+      renderQuestion();
+    });
+  });
+}
+
+function renderQuestion() {
+  const filtered = getFilteredQuestions();
+  if (filtered.length === 0) {
+    document.getElementById('questionCard').innerHTML = `
+      <div style="text-align:center; padding:40px;">
+        <div style="font-size:3rem; margin-bottom:16px;">🎯</div>
+        <h3>Nenhuma questão neste filtro</h3>
+        <p style="color:var(--text-muted); margin-top:10px;">Tente alterar o filtro ou sair do modo de revisão.</p>
+      </div>
+    `;
+    return;
+  }
+
+  const q = filtered[state.currentIndex];
+  const answered = state.answers[q.id];
+
+  document.getElementById('qNumber').textContent = `Questão ${state.currentIndex + 1}`;
+  document.getElementById('qDomain').textContent = q.domain;
+  document.getElementById('qText').textContent = q.text;
+
+  const optionsContainer = document.getElementById('qOptions');
+  const letters = ['A', 'B', 'C', 'D'];
+  optionsContainer.innerHTML = q.options.map((opt, i) => {
+    let cls = 'option';
+    if (answered) {
+      cls += ' disabled';
+      if (i === q.correct) cls += ' correct';
+      else if (i === answered.selected && i !== q.correct) cls += ' incorrect';
+    }
+    return `<div class="${cls}" data-index="${i}">
+      <div class="option-letter">${letters[i]}</div>
+      <div>${opt}</div>
+    </div>`;
+  }).join('');
+
+  optionsContainer.querySelectorAll('.option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (answered) return;
+      const selected = parseInt(opt.dataset.index);
+      state.answers[q.id] = { selected };
+      saveState();
+      renderQuestion();
+      renderStats();
+      renderDots();
+      checkCompletion();
+    });
+  });
+
+  const feedback = document.getElementById('qFeedback');
+  const feedbackTitle = document.getElementById('feedbackTitle');
+  const feedbackText = document.getElementById('feedbackText');
+
+  if (answered) {
+    const isCorrect = answered.selected === q.correct;
+    feedback.className = `feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+    feedbackTitle.innerHTML = isCorrect
+      ? '✅ Resposta Correta!'
+      : `❌ Resposta Incorreta — Correta: ${letters[q.correct]}`;
+    feedbackText.textContent = q.explanation;
+  } else {
+    feedback.className = 'feedback';
+  }
+
+  document.getElementById('btnFlag').textContent = state.flagged.has(q.id) ? '🚩 Desmarcar' : '🚩 Marcar';
+
+  // Progress
+  const total = filtered.length;
+  const progress = ((state.currentIndex + 1) / total) * 100;
+  document.getElementById('progressFill').style.width = progress + '%';
+  document.getElementById('progressText').textContent = `Questão ${state.currentIndex + 1} de ${total}`;
+  document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
+
+  document.getElementById('btnPrev').disabled = state.currentIndex === 0;
+  document.getElementById('btnNext').disabled = state.currentIndex === filtered.length - 1;
+}
+
+function renderStats() {
+  const answered = Object.keys(state.answers).length;
+  const correct = Object.values(state.answers).filter((a, i) => {
+    const q = questions[i];
+    return q && a.selected === q.correct;
+  }).length;
+  // Recalculate correctly
+  let correctCount = 0;
+  for (const q of questions) {
+    if (state.answers[q.id] && state.answers[q.id].selected === q.correct) correctCount++;
+  }
+  const percent = answered > 0 ? Math.round((correctCount / answered) * 100) : 0;
+
+  document.getElementById('statAnswered').textContent = answered;
+  document.getElementById('statCorrect').textContent = correctCount;
+  document.getElementById('statPercent').textContent = percent + '%';
+  document.getElementById('statFlagged').textContent = state.flagged.size;
+}
+
+function render() {
+  renderDomainFilter();
+  renderDots();
+  renderQuestion();
+  renderStats();
+}
+
+function checkCompletion() {
+  const filtered = getFilteredQuestions();
+  const allAnswered = filtered.every(q => state.answers[q.id]);
+  if (allAnswered && filtered.length > 0) {
+    let correct = 0;
+    filtered.forEach(q => {
+      if (state.answers[q.id].selected === q.correct) correct++;
+    });
+    const percent = Math.round((correct / filtered.length) * 100);
+    showModal(percent, correct, filtered.length);
+  }
+}
+
+function showModal(percent, correct, total) {
+  const modal = document.getElementById('modal');
+  const icon = document.getElementById('modalIcon');
+  const title = document.getElementById('modalTitle');
+  const text = document.getElementById('modalText');
+
+  if (percent >= 80) {
+    icon.textContent = '🏆';
+    title.textContent = 'Excelente!';
+    text.textContent = 'Você está pronto para a certificação CSA!';
+  } else if (percent >= 60) {
+    icon.textContent = '👍';
+    title.textContent = 'Bom trabalho!';
+    text.textContent = 'Continue estudando para alcançar a maestria.';
+  } else {
+    icon.textContent = '📚';
+    title.textContent = 'Continue estudando!';
+    text.textContent = 'Revise os conceitos e tente novamente.';
+  }
+
+  document.getElementById('modalScore').textContent = percent + '%';
+  document.getElementById('modalScoreLabel').textContent = `${correct} de ${total} corretas`;
+  modal.classList.add('show');
+}
+
+function closeModal() {
+  document.getElementById('modal').classList.remove('show');
+}
+
+function resetProgress() {
+  if (confirm('Tem certeza que deseja resetar todo o progresso? Esta ação não pode ser desfeita.')) {
+    localStorage.removeItem('snow_csa_state');
+    state = { currentIndex: 0, answers: {}, flagged: new Set(), filter: 'all', reviewMode: false };
+    render();
+    closeModal();
+  }
+}
+
+document.getElementById('btnPrev').addEventListener('click', () => {
+  if (state.currentIndex > 0) {
+    state.currentIndex--;
+    renderQuestion();
+    renderDots();
+  }
+});
+
+document.getElementById('btnNext').addEventListener('click', () => {
+  const filtered = getFilteredQuestions();
+  if (state.currentIndex < filtered.length - 1) {
+    state.currentIndex++;
+    renderQuestion();
+    renderDots();
+  }
+});
+
+document.getElementById('btnFlag').addEventListener('click', () => {
+  const filtered = getFilteredQuestions();
+  const q = filtered[state.currentIndex];
+  if (state.flagged.has(q.id)) state.flagged.delete(q.id);
+  else state.flagged.add(q.id);
+  saveState();
+  renderStats();
+  renderDots();
+  renderQuestion();
+});
+
+document.getElementById('btnReview').addEventListener('click', () => {
+  state.reviewMode = !state.reviewMode;
+  state.currentIndex = 0;
+  document.getElementById('btnReview').textContent = state.reviewMode ? '📋 Ver todas as questões' : '📚 Apenas questões erradas';
+  render();
+});
+
+document.getElementById('btnReset').addEventListener('click', resetProgress);
+
+// Keyboard navigation
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') document.getElementById('btnNext').click();
+  if (e.key === 'ArrowLeft') document.getElementById('btnPrev').click();
+  if (['1','2','3','4'].includes(e.key)) {
+    const opts = document.querySelectorAll('.option:not(.disabled)');
+    if (opts[parseInt(e.key)-1]) opts[parseInt(e.key)-1].click();
+  }
+});
+
+loadState();
+render();
+</script>
+
+</body>
+</html>

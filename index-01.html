@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Simulado CSA ServiceNow — 80 Questões | Estudo Intensivo</title>
+<style>
+  :root {
+    --primary: #81B5A1;
+    --primary-dark: #5E9A84;
+    --accent: #FF6B6B;
+    --success: #22c55e;
+    --danger: #ef4444;
+    --warning: #f59e0b;
+    --bg: #0f172a;
+    --bg-2: #1e293b;
+    --card: rgba(255, 255, 255, 0.04);
+    --card-border: rgba(255, 255, 255, 0.08);
+    --text: #f1f5f9;
+    --text-muted: #94a3b8;
+    --shadow: 0 10px 40px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', sans-serif;
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+    color: var(--text);
+    min-height: 100vh;
+    line-height: 1.6;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: radial-gradient(circle at 20% 30%, rgba(129,181,161,0.15) 0%, transparent 40%),
+                radial-gradient(circle at 80% 70%, rgba(99,102,241,0.1) 0%, transparent 40%);
+    z-index: -1;
+    animation: bgShift 20s ease infinite;
+  }
+
+  @keyframes bgShift {
+    0%, 100% { transform: translate(0,0); }
+    50% { transform: translate(-5%, -5%); }
+  }
+
+  .container { max-width: 950px; margin: 0 auto; padding: 20px; }
+
+  header { text-align: center; padding: 30px 20px 20px; }
+
+  .logo { display: inline-flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+
+  .logo-icon {
+    width: 52px; height: 52px;
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 26px;
+    box-shadow: 0 8px 20px rgba(129,181,161,0.3);
+  }
+
+  h1 {
+    font-size: clamp(1.5rem, 4vw, 2.2rem);
+    font-weight: 700;
+    background: linear-gradient(135deg, #fff, var(--primary));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .subtitle { color: var(--text-muted); font-size: 0.95rem; margin-top: 6px; }
+
+  .weak-domains {
+    background: rgba(239,68,68,0.08);
+    border: 1px solid rgba(239,68,68,0.25);
+    border-radius: 14px;
+    padding: 14px 18px;
+    margin: 16px 0;
+    font-size: 0.85rem;
+  }
+
+  .weak-domains strong { color: var(--accent); }
+
+  .stats-bar {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+    margin: 20px 0;
+  }
+
+  .stat-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 12px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    transition: transform 0.2s;
+  }
+
+  .stat-card:hover { transform: translateY(-3px); }
+
+  .stat-value { font-size: 1.5rem; font-weight: 700; color: var(--primary); }
+  .stat-label { font-size: 0.7rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 0.5px; margin-top: 4px; }
+
+  .progress-wrapper {
+    margin: 20px 0;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 16px;
+  }
+
+  .progress-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 10px; font-size: 0.85rem; color: var(--text-muted);
+  }
+
+  .progress-bar { height: 8px; background: rgba(255,255,255,0.08); border-radius: 10px; overflow: hidden; }
+
+  .progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary), var(--primary-dark));
+    border-radius: 10px;
+    transition: width 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 0 10px rgba(129,181,161,0.5);
+  }
+
+  .domain-filter { display: flex; gap: 8px; flex-wrap: wrap; margin: 20px 0; }
+
+  .filter-btn {
+    padding: 8px 14px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    color: var(--text-muted);
+    cursor: pointer;
+    font-size: 0.8rem;
+    transition: all 0.2s;
+  }
+
+  .filter-btn:hover { border-color: var(--primary); color: var(--primary); }
+
+  .filter-btn.active {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff; border-color: transparent;
+    box-shadow: 0 4px 12px rgba(129,181,161,0.3);
+  }
+
+  .question-card {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 20px;
+    padding: 28px;
+    margin: 20px 0;
+    backdrop-filter: blur(10px);
+    box-shadow: var(--shadow);
+    animation: fadeIn 0.4s ease;
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(15px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .question-meta {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 16px; flex-wrap: wrap; gap: 8px;
+  }
+
+  .question-number {
+    font-size: 0.8rem; color: var(--primary);
+    font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+  }
+
+  .question-domain {
+    font-size: 0.72rem; padding: 4px 10px;
+    background: rgba(129,181,161,0.15);
+    color: var(--primary);
+    border-radius: 12px;
+    border: 1px solid rgba(129,181,161,0.3);
+  }
+
+  .question-text { font-size: 1.1rem; font-weight: 500; margin-bottom: 24px; line-height: 1.7; }
+
+  .options { display: flex; flex-direction: column; gap: 10px; }
+
+  .option {
+    padding: 14px 18px;
+    background: rgba(255,255,255,0.03);
+    border: 2px solid var(--card-border);
+    border-radius: 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex; align-items: flex-start; gap: 12px;
+    font-size: 0.95rem;
+  }
+
+  .option:hover:not(.disabled) {
+    border-color: var(--primary);
+    background: rgba(129,181,161,0.08);
+    transform: translateX(4px);
+  }
+
+  .option-letter {
+    min-width: 28px; height: 28px;
+    background: rgba(255,255,255,0.08);
+    border-radius: 8px;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 0.85rem;
+    color: var(--primary); flex-shrink: 0;
+  }
+
+  .option.correct { border-color: var(--success); background: rgba(34,197,94,0.1); animation: pulse 0.5s; }
+  .option.correct .option-letter { background: var(--success); color: #fff; }
+
+  .option.incorrect { border-color: var(--danger); background: rgba(239,68,68,0.1); animation: shake 0.4s; }
+  .option.incorrect .option-letter { background: var(--danger); color: #fff; }
+
+  .option.disabled { cursor: not-allowed; }
+
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.02); } }
+  @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-6px); } 75% { transform: translateX(6px); } }
+
+  .feedback { margin-top: 20px; padding: 18px; border-radius: 14px; display: none; animation: fadeIn 0.4s; }
+  .feedback.show { display: block; }
+  .feedback.correct { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.3); }
+  .feedback.incorrect { background: rgba(239,68,68,0.1); border: 1px solid rgba(239,68,68,0.3); }
+
+  .feedback-title { font-weight: 700; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+  .feedback.correct .feedback-title { color: var(--success); }
+  .feedback.incorrect .feedback-title { color: var(--danger); }
+  .feedback-text { font-size: 0.95rem; color: var(--text); line-height: 1.7; }
+
+  .actions { display: flex; gap: 10px; margin-top: 20px; flex-wrap: wrap; }
+
+  .btn {
+    padding: 12px 22px; border: none; border-radius: 10px;
+    cursor: pointer; font-weight: 600; font-size: 0.9rem;
+    transition: all 0.2s;
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+
+  .btn-primary {
+    background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+    color: #fff; box-shadow: 0 4px 14px rgba(129,181,161,0.3);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(129,181,161,0.4); }
+
+  .btn-secondary { background: rgba(255,255,255,0.06); color: var(--text); border: 1px solid var(--card-border); }
+  .btn-secondary:hover { background: rgba(255,255,255,0.1); }
+
+  .btn-danger { background: rgba(239,68,68,0.15); color: var(--danger); border: 1px solid rgba(239,68,68,0.3); }
+  .btn-danger:hover { background: rgba(239,68,68,0.25); }
+
+  .btn:disabled { opacity: 0.4; cursor: not-allowed; }
+
+  .nav-controls {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-top: 20px; gap: 10px; flex-wrap: wrap;
+  }
+
+  .question-dots {
+    display: flex; gap: 4px; flex-wrap: wrap; justify-content: center;
+    margin: 20px 0; padding: 14px;
+    background: var(--card); border: 1px solid var(--card-border);
+    border-radius: 14px;
+    max-height: 200px; overflow-y: auto;
+  }
+
+  .dot {
+    width: 22px; height: 22px; border-radius: 6px;
+    background: rgba(255,255,255,0.08);
+    cursor: pointer; transition: all 0.2s;
+    border: 1px solid transparent;
+    font-size: 0.6rem;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--text-muted);
+  }
+
+  .dot:hover { transform: scale(1.2); }
+  .dot.current { background: var(--primary); color: #fff; box-shadow: 0 0 10px rgba(129,181,161,0.5); }
+  .dot.correct { background: var(--success); color: #fff; }
+  .dot.incorrect { background: var(--danger); color: #fff; }
+  .dot.flagged { border-color: var(--warning); }
+
+  .modal-overlay {
+    position: fixed; inset: 0;
+    background: rgba(0,0,0,0.75);
+    display: none; align-items: center; justify-content: center;
+    z-index: 100; padding: 20px; backdrop-filter: blur(8px);
+  }
+  .modal-overlay.show { display: flex; animation: fadeIn 0.3s; }
+
+  .modal {
+    background: var(--bg-2);
+    border: 1px solid var(--card-border);
+    border-radius: 20px; padding: 30px;
+    max-width: 500px; width: 100%; text-align: center;
+    box-shadow: var(--shadow);
+  }
+
+  .modal-icon { font-size: 4rem; margin-bottom: 16px; }
+  .modal h2 {
+    font-size: 1.6rem; margin-bottom: 10px;
+    background: linear-gradient(135deg, #fff, var(--primary));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .modal p { color: var(--text-muted); margin-bottom: 20px; }
+
+  .score-display { font-size: 3rem; font-weight: 800; color: var(--primary); margin: 16px 0; }
+  .score-label { color: var(--text-muted); font-size: 0.9rem; }
+
+  .domain-score {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 8px;
+    margin: 16px 0; text-align: left;
+  }
+  .domain-score-item {
+    background: rgba(255,255,255,0.04);
+    padding: 8px 12px; border-radius: 8px;
+    font-size: 0.8rem;
+  }
+  .domain-score-item .pct { font-weight: 700; color: var(--primary); float: right; }
+
+  footer { text-align: center; padding: 30px 20px; color: var(--text-muted); font-size: 0.85rem; }
+
+  @media (max-width: 600px) {
+    .question-card { padding: 20px; }
+    .question-text { font-size: 1rem; }
+    .option { padding: 12px 14px; font-size: 0.9rem; }
+    .stat-card { padding: 10px; }
+    .stat-value { font-size: 1.2rem; }
+    .domain-score { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <header>
+    <div class="logo">
+      <div class="logo-icon">☁️</div>
+      <div>
+        <h1>Simulado CSA ServiceNow</h1>
+        <p class="subtitle">Certified System Administrator • 80 Questões • Foco em Domínios Fracos</p>
+      </div>
+    </div>
+  </header>
+
+  <div class="weak-domains">
+    <strong>🎯 Foco de estudo:</strong> Self Service & Automation (50%), Database Management & Security (56%), Data Migration & Integration (68%) — domínios com menor desempenho na última prova.
+  </div>
+
+  <div class="stats-bar">
+    <div class="stat-card"><div class="stat-value" id="statAnswered">0</div><div class="stat-label">Respondidas</div></div>
+    <div class="stat-card"><div class="stat-value" id="statCorrect">0</div><div class="stat-label">Corretas</div></div>
+    <div class="stat-card"><div class="stat-value" id="statPercent">0%</div><div class="stat-label">Aproveitamento</div></div>
+    <div class="stat-card"><div class="stat-value" id="statFlagged">0</div><div class="stat-label">Revisão</div></div>
+  </div>
+
+  <div class="progress-wrapper">
+    <div class="progress-header">
+      <span id="progressText">Questão 1 de 80</span>
+      <span id="progressPercent">0%</span>
+    </div>
+    <div class="progress-bar"><div class="progress-fill" id="progressFill" style="width: 0%"></div></div>
+  </div>
+
+  <div class="domain-filter" id="domainFilter"></div>
+
+  <div class="question-dots" id="questionDots"></div>
+
+  <div class="question-card" id="questionCard">
+    <div class="question-meta">
+      <span class="question-number" id="qNumber">Questão 1</span>
+      <span class="question-domain" id="qDomain">Domínio</span>
+    </div>
+    <div class="question-text" id="qText"></div>
+    <div class="options" id="qOptions"></div>
+    <div class="feedback" id="qFeedback">
+      <div class="feedback-title" id="feedbackTitle"></div>
+      <div class="feedback-text" id="feedbackText"></div>
+    </div>
+    <div class="nav-controls">
+      <button class="btn btn-secondary" id="btnPrev">← Anterior</button>
+      <button class="btn btn-secondary" id="btnFlag">🚩 Marcar</button>
+      <button class="btn btn-primary" id="btnNext">Próxima →</button>
+    </div>
+  </div>
+
+  <div style="text-align:center; margin-top:20px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+    <button class="btn btn-secondary" id="btnReview"> Apenas erradas</button>
+    <button class="btn btn-secondary" id="btnShuffle">🔀 Embaralhar</button>
+    <button class="btn btn-danger" id="btnReset">🔄 Resetar</button>
+  </div>
+</div>
+
+<div class="modal-overlay" id="modal">
+  <div class="modal">
+    <div class="modal-icon" id="modalIcon">🎉</div>
+    <h2 id="modalTitle">Parabéns!</h2>
+    <p id="modalText">Você concluiu o simulado.</p>
+    <div class="score-display" id="modalScore">0%</div>
+    <div class="score-label" id="modalScoreLabel">de aproveitamento</div>
+    <div class="domain-score" id="modalDomainScore"></div>
+    <div style="margin-top:20px; display:flex; gap:10px; justify-content:center; flex-wrap:wrap;">
+      <button class="btn btn-primary" onclick="closeModal()">Continuar</button>
+      <button class="btn btn-danger" onclick="resetProgress()">Recomeçar</button>
+    </div>
+  </div>
+</div>
+
+<footer>Simulado educacional • CSA 2026 • Progresso salvo no navegador</footer>
+
+<script>
+const questions = [
+  // ============ DOMÍNIO 1: PLATFORM OVERVIEW AND NAVIGATION ============
+  {id:1, domain:"Platform Overview", text:"Qual é a URL padrão para acessar a interface de uma instância ServiceNow?", options:["https://<instance>.service-now.com","https://<instance>.servicenow.net","https://<instance>.sn-instance.com","https://<instance>.snow.com"], correct:0, explanation:"O formato padrão é https://<instance>.service-now.com, onde <instance> é o nome único da instância."},
+  {id:2, domain:"Platform Overview", text:"O que é o 'Application Navigator' (navegador de aplicações) na ServiceNow?", options:["Um relatório de uso de aplicações","O menu lateral esquerdo que permite buscar módulos, aplicações e registros","Um assistente de instalação de plugins","Uma ferramenta de monitoramento de performance"], correct:1, explanation:"O Application Navigator (filtro de navegação) fica no topo do menu lateral e permite buscar rapidamente módulos, tabelas e registros."},
+  {id:3, domain:"Platform Overview", text:"Qual módulo do menu 'System Definition' permite visualizar a hierarquia de tabelas e suas relações?", options:["Tables","Schema Map","Dictionary","Relationships"], correct:1, explanation:"O Schema Map mostra visualmente a hierarquia de tabelas e suas relações de herança (parent-child)."},
+  {id:4, domain:"Platform Overview", text:"O que é um 'Module' na ServiceNow?", options:["Um plugin instalado","Um link dentro de uma aplicação que abre uma página específica (lista, formulário, etc.)","Um tipo de usuário","Uma regra de negócio"], correct:1, explanation:"Modules são os itens de menu dentro de aplicações que levam a páginas específicas (listas, forms, dashboards)."},
+  {id:5, domain:"Platform Overview", text:"Qual é a função do 'Global Search' (busca global) no topo da plataforma?", options:["Buscar apenas usuários","Buscar registros em todas as tabelas acessíveis ao usuário","Buscar apenas incidentes","Buscar apenas documentação"], correct:1, explanation:"A busca global pesquisa em todas as tabelas para as quais o usuário tem permissão de leitura."},
+  {id:6, domain:"Platform Overview", text:"O que é um 'Bookmark' na ServiceNow?", options:["Um registro salvo no banco","Um atalho salvo pelo usuário para acesso rápido a uma página específica","Um tipo de notificação","Um relatório agendado"], correct:1, explanation:"Bookmarks são atalhos personalizados que o usuário pode salvar no menu para acesso rápido."},
+  {id:7, domain:"Platform Overview", text:"Qual é a diferença entre 'List View' e 'Form View'?", options:["List View mostra múltiplos registros em tabela; Form View mostra detalhes de um único registro","List View é só para admins; Form View é para todos","Não há diferença","Form View mostra múltiplos registros"], correct:0, explanation:"List View exibe registros em formato de tabela (múltiplos); Form View exibe os detalhes de um registro específico."},
+  {id:8, domain:"Platform Overview", text:"O que é o 'ServiceNow Store'?", options:["Um marketplace de aplicações e integrações de terceiros e da ServiceNow","Uma loja de hardware","Um repositório de código-fonte","Um sistema de tickets"], correct:0, explanation:"O ServiceNow Store é um marketplace onde parceiros e a ServiceNow publicam aplicações certificadas."},
+
+  // ============ DOMÍNIO 2: INSTANCE CONFIGURATION ============
+  {id:9, domain:"Instance Configuration", text:"O que é um 'Update Set'?", options:["Um backup completo do banco","Um conjunto de customizações que pode ser movido entre instâncias (DEV→TEST→PROD)","Um grupo de usuários","Um relatório de auditoria"], correct:1, explanation:"Update Sets capturam customizações (tabelas, campos, scripts, ACLs, etc.) para promover mudanças entre instâncias."},
+  {id:10, domain:"Instance Configuration", text:"Qual tipo de alteração NÃO é capturada automaticamente por um Update Set?", options:["Business Rules","Client Scripts","Dados transacionais (ex: um incidente criado)","UI Policies"], correct:2, explanation:"Update Sets capturam CONFIGURAÇÕES, não DADOS. Registros transacionais como incidentes não são movidos via Update Set."},
+  {id:11, domain:"Instance Configuration", text:"Qual é o Update Set padrão (default) de uma instância recém-criada?", options:["Default","Global","My Company","Baseline"], correct:0, explanation:"O Update Set 'Default' é o padrão inicial. Customizações devem ser movidas para um Update Set específico antes de serem promovidas."},
+  {id:12, domain:"Instance Configuration", text:"O que acontece quando você 'Complete' um Update Set?", options:["Ele é deletado","Ele é marcado como fechado e pronto para ser exportado/importado","Ele é aplicado automaticamente em produção","Ele é arquivado permanentemente"], correct:1, explanation:"Ao completar, o Update Set fica pronto para exportação (XML) ou captura via sets de mudança."},
+  {id:13, domain:"Instance Configuration", text:"O que é um 'Plugin' na ServiceNow?", options:["Um script personalizado","Um pacote de funcionalidades pré-construídas que pode ser ativado na instância","Um tipo de relatório","Uma role especial"], correct:1, explanation:"Plugins são pacotes de funcionalidades (ex: ITIL, HR, ITOM) que podem ser ativados sob demanda."},
+  {id:14, domain:"Instance Configuration", text:"Qual módulo permite agendar a execução de scripts e tarefas automáticas?", options:["Scheduled Jobs","Background Scripts","Fix Scripts","System Logs"], correct:0, explanation:"Scheduled Jobs permitem agendar execuções periódicas de scripts server-side."},
+  {id:15, domain:"Instance Configuration", text:"O que é o 'System Properties' (sys_properties)?", options:["Um relatório do sistema","Uma tabela que armazena configurações globais da instância (chave-valor)","Um tipo de usuário","Uma ACL especial"], correct:1, explanation:"System Properties armazena configurações globais como nome da empresa, URLs, limites, etc."},
+  {id:16, domain:"Instance Configuration", text:"Qual a função do 'Maintenance Window' em uma instância?", options:["Período em que a instância fica offline para atualizações pela ServiceNow","Horário de expediente da empresa","Janela para backup manual","Período de testes"], correct:0, explanation:"Maintenance Window é o período agendado pela ServiceNow para aplicar patches e upgrades na instância."},
+  {id:17, domain:"Instance Configuration", text:"O que é 'Cloning' de instância?", options:["Criar cópia exata de uma instância (ex: PROD→DEV) para testes","Duplicar um usuário","Copiar um relatório","Clonar um plugin"], correct:0, explanation:"Cloning cria uma cópia completa de uma instância, geralmente de PROD para ambientes de teste/desenvolvimento."},
+  {id:18, domain:"Instance Configuration", text:"Qual é a role mínima necessária para personalizar formulários e listas?", options:["itil","admin","security_admin","user"], correct:1, explanation:"A role 'admin' (ou personalizador designado) é necessária para customizar formulários, listas e configurações de sistema."},
+
+  // ============ DOMÍNIO 3: CONFIGURING APPLICATIONS FOR COLLABORATION ============
+  {id:19, domain:"Collaboration", text:"Qual tabela armazena os usuários do sistema?", options:["sys_user_group","sys_user","sys_user_has_role","core_company"], correct:1, explanation:"A tabela `sys_user` armazena todos os registros de usuários."},
+  {id:20, domain:"Collaboration", text:"Qual tabela armazena os grupos de usuários?", options:["sys_user","sys_user_group","sys_user_has_role","sys_group"], correct:1, explanation:"A tabela `sys_user_group` armazena as definições de grupos."},
+  {id:21, domain:"Collaboration", text:"Qual tabela representa o relacionamento entre usuários e grupos?", options:["sys_user","sys_user_grmember","sys_user_has_role","sys_group_member"], correct:1, explanation:"`sys_user_grmember` armazena a associação de usuários a grupos (muitos-para-muitos)."},
+  {id:22, domain:"Collaboration", text:"Qual tabela armazena a relação entre usuários e roles?", options:["sys_user","sys_user_role","sys_user_has_role","sys_role"], correct:2, explanation:"`sys_user_has_role` armazena o relacionamento entre usuários e roles."},
+  {id:23, domain:"Collaboration", text:"O que é uma 'Role' na ServiceNow?", options:["Um grupo de usuários","Um conjunto de permissões que define o que um usuário pode fazer","Um tipo de formulário","Um módulo de menu"], correct:1, explanation:"Roles são conjuntos de privilégios que determinam acesso a módulos, tabelas e operações."},
+  {id:24, domain:"Collaboration", text:"Qual é a role mais poderosa da plataforma, que concede acesso total?", options:["itil","admin","security_admin","user_admin"], correct:1, explanation:"A role `admin` concede acesso total à instância, exceto algumas funções restritas ao security_admin."},
+  {id:25, domain:"Collaboration", text:"O que é a role `security_administrator`?", options:["Uma role comum de helpdesk","Uma role de privilégio elevado necessária para modificar ACLs, concedida temporariamente via Elevate Roles","Uma role apenas para leitura","Uma role de auditoria"], correct:1, explanation:"`security_administrator` exige elevação de privilégios (Elevate Roles) para modificar ACLs e configurações sensíveis."},
+  {id:26, domain:"Collaboration", text:"O que a role `impersonator` permite fazer?", options:["Criar cópias de instâncias","Assumir temporariamente a identidade de outro usuário para testar ACLs e visibilidade","Apagar registros","Modificar plugins"], correct:1, explanation:"Impersonate permite ver a plataforma como outro usuário, ideal para testes de visibilidade e regras de acesso."},
+  {id:27, domain:"Collaboration", text:"Como um administrador assume a identidade de outro usuário?", options:["Via Clone User","Via Impersonate User (ícone de usuário no header)","Via Reset Password","Via Elevate Roles"], correct:1, explanation:"O recurso 'Impersonate User' está disponível no menu de usuário no topo da plataforma."},
+  {id:28, domain:"Collaboration", text:"O que é 'Elevate Roles'?", options:["Promover um usuário a admin permanente","Conceder temporariamente uma role de privilégio elevado (ex: security_admin) para a sessão atual","Criar uma nova role","Deletar uma role"], correct:1, explanation:"Elevate Roles concede roles sensíveis apenas para a sessão atual, sem torná-las permanentes."},
+  {id:29, domain:"Collaboration", text:"Qual é a melhor prática para atribuir permissões a múltiplos usuários com as mesmas necessidades?", options:["Atribuir roles diretamente a cada usuário","Criar um grupo, atribuir roles ao grupo, e adicionar usuários ao grupo","Criar um Update Set","Usar ACLs diretamente"], correct:1, explanation:"Atribuir roles a grupos (e usuários aos grupos) facilita a administração em escala."},
+  {id:30, domain:"Collaboration", text:"O que é uma 'Delegated Developer'?", options:["Um admin completo","Um usuário sem role admin que pode desenvolver em escopos específicos atribuídos","Um usuário de teste","Um security_admin"], correct:1, explanation:"Delegated Developers podem desenvolver em aplicações escopadas sem ter a role admin global."},
+  {id:31, domain:"Collaboration", text:"Qual tabela armazena as definições de roles?", options:["sys_user","sys_user_has_role","sys_user_role","sys_role_def"], correct:2, explanation:"`sys_user_role` armazena as definições das roles (nome, descrição, etc.)."},
+  {id:32, domain:"Collaboration", text:"O que é 'Role Containment' em aplicações escopadas?", options:["Roles globais aplicadas a escopos","Roles de aplicação escopada que não concedem privilégios fora do escopo","Roles temporárias","Roles de auditoria"], correct:1, explanation:"Em scoped apps, as roles são contidas ao escopo da aplicação, não afetando o escopo global."},
+
+  // ============ DOMÍNIO 4: SELF SERVICE & AUTOMATION ============
+  {id:33, domain:"Self Service & Automation", text:"Quando um usuário solicita um Catalog Item, qual a ordem correta de geração de registros?", options:["incident → problem → change","sc_request → sc_req_item → sc_task","task_sla → sys_email → sc_task","cmdb_ci_service → kb_knowledge → sc_request"], correct:1, explanation:"A hierarquia é: Request (sc_request) → Requested Item (sc_req_item) → Catalog Task (sc_task)."},
+  {id:34, domain:"Self Service & Automation", text:"Qual tabela armazena a 'Requisição Geral' (cabeçalho) do Service Catalog?", options:["sc_task","sc_req_item","sc_request","sc_catalog"], correct:2, explanation:"`sc_request` é o registro pai que agrupa todos os itens solicitados em uma única requisição."},
+  {id:35, domain:"Self Service & Automation", text:"Qual tabela armazena cada 'Item Solicitado' individualmente?", options:["sc_request","sc_req_item","sc_task","sc_item"], correct:1, explanation:"`sc_req_item` (Requested Item) representa cada item individual dentro de uma requisição."},
+  {id:36, domain:"Self Service & Automation", text:"Qual tabela armazena as 'Tarefas' geradas para fulfillment de um item de catálogo?", options:["sc_request","sc_req_item","sc_task","task"], correct:2, explanation:"`sc_task` (Catalog Task) são as tarefas de atendimento atribuídas a grupos/indivíduos para fulfillment."},
+  {id:37, domain:"Self Service & Automation", text:"O que diferencia o Self-Service tradicional do Employee Center?", options:["Self-Service é só para devs","Employee Center unifica múltiplos departamentos (TI, RH, Jurídico) em uma experiência moderna; Self-Service é mais básico","São idênticos","Employee Center roda fora da plataforma"], correct:1, explanation:"Employee Center consolida uma experiência multi-departamental unificada, substituindo portais legados."},
+  {id:38, domain:"Self Service & Automation", text:"O que um usuário consegue acessar via Self-Service padrão?", options:["Todas as tabelas do sistema","Incidentes próprios, base de conhecimento, e solicitações de catálogo","Apenas relatórios","Apenas configurações"], correct:1, explanation:"Self-Service permite criar incidentes, consultar KB e solicitar itens de catálogo."},
+  {id:39, domain:"Self Service & Automation", text:"O que é um 'Catalog Item'?", options:["Um incidente","Um produto ou serviço que pode ser solicitado via Service Catalog","Um tipo de usuário","Uma role"], correct:1, explanation:"Catalog Items são produtos/serviços (ex: novo laptop, acesso a sistema) solicitáveis via catálogo."},
+  {id:40, domain:"Self Service & Automation", text:"O que é um 'Record Producer'?", options:["Um script que cria registros","Um tipo de item de catálogo que permite criar registros em qualquer tabela (ex: incident via portal)","Um relatório","Uma ACL"], correct:1, explanation:"Record Producers são formulários de catálogo que criam registros em tabelas arbitrárias (incident, change, custom)."},
+  {id:41, domain:"Self Service & Automation", text:"O que é um 'Order Guide'?", options:["Um manual de pedidos","Um item de catálogo que agrupa múltiplos itens relacionados em uma única solicitação","Um tipo de tarefa","Uma notificação"], correct:1, explanation:"Order Guides permitem solicitar múltiplos itens relacionados de uma só vez (ex: kit de onboarding)."},
+  {id:42, domain:"Self Service & Automation", text:"O que são 'Variables' em um Catalog Item?", options:["Scripts server-side","Campos dinâmicos do formulário de catálogo que capturam informações específicas da solicitação","Roles","ACLs"], correct:1, explanation:"Variables são os campos do formulário de catálogo (texto, escolha, referência, etc.)."},
+  {id:43, domain:"Self Service & Automation", text:"O que é um 'Variable Set'?", options:["Um conjunto de variáveis reutilizável em múltiplos Catalog Items","Um grupo de usuários","Um tipo de relatório","Uma ACL"], correct:0, explanation:"Variable Sets permitem reutilizar o mesmo conjunto de campos em vários itens de catálogo."},
+  {id:44, domain:"Self Service & Automation", text:"O que é 'Flow Designer'?", options:["Uma ferramenta de design de formulários","Uma ferramenta low-code para automatizar processos e integrações (substitui parcialmente Workflows)","Um tipo de relatório","Uma ACL"], correct:1, explanation:"Flow Designer é a ferramenta moderna de automação low-code da ServiceNow, sucessora dos Workflows legados."},
+  {id:45, domain:"Self Service & Automation", text:"Qual a diferença entre Flow Designer e Workflow Editor?", options:["São idênticos","Flow Designer é a ferramenta moderna low-code; Workflow Editor é a ferramenta legada baseada em atividades","Workflow é mais novo","Flow Designer só funciona no cliente"], correct:1, explanation:"Flow Designer é a evolução moderna; Workflow Editor é legado mas ainda suportado."},
+  {id:46, domain:"Self Service & Automation", text:"O que é um 'Approval' em um fluxo de catálogo?", options:["Uma notificação","Uma etapa que requer aprovação de um usuário/grupo antes de prosseguir","Um tipo de variável","Uma ACL"], correct:1, explanation:"Approvals são etapas de aprovação que pausam o fluxo até que o aprovador aceite/rejeite."},
+  {id:47, domain:"Self Service & Automation", text:"O que é 'Service Catalog'?", options:["Uma lista de incidentes","Um portal onde usuários solicitam produtos e serviços de TI e outros departamentos","Um tipo de relatório","Uma tabela de usuários"], correct:1, explanation:"Service Catalog é o catálogo de serviços self-service da organização."},
+  {id:48, domain:"Self Service & Automation", text:"O que é um 'Catalog Category'?", options:["Um tipo de usuário","Uma forma de organizar Catalog Items em grupos lógicos (ex: Hardware, Software)","Uma role","Uma ACL"], correct:1, explanation:"Categories organizam itens de catálogo em grupos navegáveis."},
+  {id:49, domain:"Self Service & Automation", text:"Qual tabela armazena as definições de Catalog Items?", options:["sc_task","sc_req_item","sc_cat_item","sc_request"], correct:2, explanation:"`sc_cat_item` armazena as definições (metadados) dos itens de catálogo."},
+  {id:50, domain:"Self Service & Automation", text:"O que é 'Knowledge Base' (KB) na ServiceNow?", options:["Um banco de dados de usuários","Um repositório de artigos de conhecimento para autoatendimento","Um tipo de incidente","Uma role"], correct:1, explanation:"Knowledge Base armazena artigos que ajudam usuários a resolver problemas sem abrir tickets."},
+  {id:51, domain:"Self Service & Automation", text:"Qual tabela armazena artigos da base de conhecimento?", options:["kb_article","kb_knowledge","kb_doc","knowledge_base"], correct:1, explanation:"`kb_knowledge` armazena os artigos da base de conhecimento."},
+  {id:52, domain:"Self Service & Automation", text:"Como controlar quem pode LER artigos da Knowledge Base?", options:["Via ACLs na tabela kb_knowledge","Via roles e grupos definidos no registro da Knowledge Base (Can Read/Can Contribute)","Via Business Rules apenas","Não é possível controlar"], correct:1, explanation:"Cada KB tem campos 'Can Read' e 'Can Contribute' que definem quem vê e quem contribui."},
+  {id:53, domain:"Self Service & Automation", text:"O que é um 'SLA' (Service Level Agreement)?", options:["Um tipo de usuário","Um contrato que define tempo máximo para resolução/resposta de tarefas","Uma role","Um plugin"], correct:1, explanation:"SLAs definem compromissos de tempo (response, resolution) para tipos de tarefas."},
+  {id:54, domain:"Self Service & Automation", text:"Qual tabela armazena definições de SLA?", options:["task_sla","sla_definition","sys_sla","sla_contract"], correct:1, explanation:"`sla_definition` armazena as definições; `task_sla` armazena as instâncias de SLA em tarefas."},
+
+  // ============ DOMÍNIO 5: DATABASE MANAGEMENT AND PLATFORM SECURITY ============
+  {id:55, domain:"Database & Security", text:"Qual a ordem de avaliação das ACLs na ServiceNow?", options:["Campo → Linha → Tabela","Tabela → Linha → Campo","Linha → Tabela → Campo","Tabela → Campo → Linha"], correct:1, explanation:"A ordem é: Table (tabela) → Row (registro/linha) → Field (campo). Se negado em qualquer nível, para."},
+  {id:56, domain:"Database & Security", text:"Qual prefixo é usado para tabelas customizadas no escopo GLOBAL?", options:["sys_","u_","x_","custom_"], correct:1, explanation:"`u_` é para escopo global. `x_` é para scoped applications."},
+  {id:57, domain:"Database & Security", text:"Qual prefixo é usado para tabelas de Scoped Applications?", options:["u_","sys_","x_","app_"], correct:2, explanation:"`x_<namespace>_<table>` é o padrão para scoped apps."},
+  {id:58, domain:"Database & Security", text:"De qual tabela principal herdam `incident`, `problem`, `change_request`?", options:["cmdb_ci","task","sys_object","kb_knowledge"], correct:1, explanation:"`task` é a tabela pai raiz de todos os processos ITSM."},
+  {id:59, domain:"Database & Security", text:"Qual tabela é pai de `sc_task`?", options:["task","sc_req_item","sc_request","workflow"], correct:0, explanation:"`sc_task` também herda de `task`, como os outros processos ITSM."},
+  {id:60, domain:"Database & Security", text:"O que é uma ACL (Access Control List)?", options:["Um tipo de relatório","Uma regra que define quem pode acessar (ler, escrever, criar, deletar) registros/campos","Um plugin","Um tipo de usuário"], correct:1, explanation:"ACLs controlam acesso granular a operações (read, write, create, delete) em tabelas e campos."},
+  {id:61, domain:"Database & Security", text:"Quais são os 4 tipos de operação de uma ACL?", options:["Create, Read, Update, Delete","Read, Write, Create, Delete","Insert, Update, Delete, Query","View, Edit, Create, Remove"], correct:1, explanation:"As operações são: read, write, create, delete."},
+  {id:62, domain:"Database & Security", text:"Em uma ACL, o que significa 'None' no tipo de operação?", options:["Nenhuma permissão","Aplica-se a todas as operações (read, write, create, delete)","Apenas leitura","Apenas escrita"], correct:1, explanation:"ACL do tipo 'None' atua como regra global para todas as operações na tabela."},
+  {id:63, domain:"Database & Security", text:"Quais são os 3 componentes que uma ACL pode usar para conceder acesso?", options:["Role, Condition, Script","User, Group, Company","Table, Field, Record","Plugin, Module, Role"], correct:0, explanation:"ACLs usam combinação de: Role (role necessária), Condition (condição no registro), Script (script avançado)."},
+  {id:64, domain:"Database & Security", text:"Se uma ACL de Tabela nega acesso, o que acontece com as ACLs de Campo?", options:["São avaliadas normalmente","Nem são avaliadas — acesso já negado","São avaliadas primeiro","São ignoradas apenas para admins"], correct:1, explanation:"Se negado no nível de tabela, a avaliação para imediatamente (short-circuit)."},
+  {id:65, domain:"Database & Security", text:"O que é 'Field-level ACL'?", options:["ACL aplicada a toda tabela","ACL que controla acesso a um campo específico dentro de um registro","ACL de grupo","ACL de sistema"], correct:1, explanation:"Field-level ACLs controlam acesso a campos individuais (ex: salário visível apenas para RH)."},
+  {id:66, domain:"Database & Security", text:"O que é a tabela `sys_security_acl`?", options:["Tabela de usuários","Tabela que armazena todas as definições de ACLs","Tabela de incidentes","Tabela de grupos"], correct:1, explanation:"`sys_security_acl` armazena todas as regras de ACL do sistema."},
+  {id:67, domain:"Database & Security", text:"Qual a role necessária para MODIFICAR ACLs?", options:["admin","itil","security_administrator","user"], correct:2, explanation:"Modificar ACLs exige `security_administrator` via Elevate Roles."},
+  {id:68, domain:"Database & Security", text:"O que é 'Row-level ACL'?", options:["ACL que se aplica a registros específicos baseado em condição (ex: usuário só vê seus próprios incidentes)","ACL de campo","ACL de tabela","ACL de grupo"], correct:0, explanation:"Row-level ACLs filtram quais registros o usuário pode ver baseado em condições (ex: caller_id = usuário atual)."},
+  {id:69, domain:"Database & Security", text:"O que são 'Classified Records' (registros classificados)?", options:["Registros deletados","Registros marcados com nível de classificação (ex: Confidencial) que exigem permissão especial para leitura","Registros de auditoria","Registros de sistema"], correct:1, explanation:"Classified records têm campo de classificação; usuários precisam de role/permission específica para lê-los."},
+  {id:70, domain:"Database & Security", text:"Qual tabela armazena Configuration Items (CIs)?", options:["cmdb","cmdb_ci","sys_ci","config_item"], correct:1, explanation:"`cmdb_ci` é a tabela base de CIs; subclasses específicas herdam dela (cmdb_ci_server, cmdb_ci_computer, etc.)."},
+  {id:71, domain:"Database & Security", text:"O que é o 'Dependency View/Map' no CMDB?", options:["Um relatório financeiro","Uma visualização gráfica das relações de dependência entre CIs","Um tipo de ACL","Um Update Set"], correct:1, explanation:"Dependency Map mostra visualmente como CIs se relacionam e dependem uns dos outros para análise de impacto."},
+  {id:72, domain:"Database & Security", text:"O que é o CMDB (Configuration Management Database)?", options:["Um banco de dados de usuários","Um repositório central de todos os CIs (ativos de TI, serviços) e seus relacionamentos","Um tipo de relatório","Um plugin de segurança"], correct:1, explanation:"CMDB é o banco de dados central de configuração que armazena CIs e suas relações."},
+  {id:73, domain:"Database & Security", text:"Qual tabela é pai de `cmdb_ci`?", options:["task","cmdb","sys_object","asset"], correct:1, explanation:"`cmdb` é a tabela pai de `cmdb_ci` (que por sua vez é pai das subclasses de CI)."},
+  {id:74, domain:"Database & Security", text:"O que é um 'CI Class'?", options:["Um tipo de usuário","Uma categoria/tipo específico de CI (ex: Server, Computer, Application)","Uma role","Uma ACL"], correct:1, explanation:"CI Classes definem tipos específicos de itens de configuração com campos próprios."},
+  {id:75, domain:"Database & Security", text:"O que é 'Discovery' na ServiceNow?", options:["Um tipo de relatório","Um processo automatizado que identifica CIs na rede e popula o CMDB","Um plugin de segurança","Uma ACL"], correct:1, explanation:"Discovery varre a rede automaticamente para detectar ativos e atualizar o CMDB."},
+
+  // ============ DOMÍNIO 6: DATA MIGRATION AND INTEGRATION ============
+  {id:76, domain:"Data Migration", text:"Qual a ordem correta do fluxo de Import Sets?", options:["Transform Map → Target Table → Load Data","Load Data (Import Set Table) → Transform Map → Execução (Target Table)","Target Table → Transform Map → Load Data","Export Set → Transform Map → CMDB"], correct:1, explanation:"Fluxo: 1) Carrega dados na Import Set Table (temporária) → 2) Transform Map mapeia colunas → 3) Transformação para Target Table."},
+  {id:77, domain:"Data Migration", text:"O que é uma 'Import Set Table'?", options:["A tabela final de destino","Uma tabela temporária (staging) que recebe os dados brutos antes da transformação","Um tipo de ACL","Uma tabela de sistema"], correct:1, explanation:"Import Set Tables (ex: u_import_staging) armazenam dados brutos antes do mapeamento."},
+  {id:78, domain:"Data Migration", text:"O que é um 'Transform Map'?", options:["Um mapa geográfico","Um conjunto de regras que mapeia campos da Import Set Table para a Target Table","Um tipo de ACL","Um relatório"], correct:1, explanation:"Transform Maps definem como campos da tabela de staging mapeiam para a tabela de destino."},
+  {id:79, domain:"Data Migration", text:"O que é 'Coalesce' em um Transform Map?", options:["Deletar registros duplicados","Um campo usado para identificar registros existentes e evitar duplicação (merge/update)","Um tipo de ACL","Um script"], correct:1, explanation:"Coalesce identifica registros existentes pelo campo chave para atualizar em vez de criar duplicatas."},
+  {id:80, domain:"Data Migration", text:"O que acontece quando o Coalesce encontra um registro existente na Target Table?", options:["Cria um novo registro duplicado","Atualiza o registro existente com os novos dados","Ignora o registro","Deleta o registro"], correct:1, explanation:"Com Coalesce, registros existentes são atualizados (upsert), evitando duplicação."},
+  {id:81, domain:"Data Migration", text:"O que é 'Data Source' na ServiceNow?", options:["Um tipo de usuário","A definição de onde os dados externos vêm (CSV, Excel, JDBC, LDAP, etc.)","Uma ACL","Um relatório"], correct:1, explanation:"Data Source define a origem dos dados para importação (arquivo, banco externo, LDAP, etc.)."},
+  {id:82, domain:"Data Migration", text:"Qual formato de arquivo é MAIS comum para Import Sets?", options:["PDF","CSV ou Excel","DOC","JPG"], correct:1, explanation:"CSV e Excel (XLS/XLSX) são os formatos mais usados para importação em massa."},
+  {id:83, domain:"Data Migration", text:"O que é 'Field Map' dentro de um Transform Map?", options:["Um mapa geográfico","O mapeamento individual de um campo da origem para um campo do destino","Uma ACL","Um tipo de relatório"], correct:1, explanation:"Cada Field Map define como um campo específico da Import Set Table mapeia para a Target Table."},
+  {id:84, domain:"Data Migration", text:"O que é 'Script Map' em um Transform Map?", options:["Um script que roda no cliente","Um mapeamento de campo que usa script personalizado para transformar o valor durante a importação","Um tipo de ACL","Um relatório"], correct:1, explanation:"Script Maps permitem lógica customizada (JavaScript) para transformar valores durante o mapeamento."},
+  {id:85, domain:"Data Migration", text:"O que é 'Transform History'?", options:["Um backup","O log de execuções de transformações, mostrando quantos registros foram inseridos/atualizados/ignorados","Um tipo de ACL","Uma tabela de sistema"], correct:1, explanation:"Transform History registra cada execução de transformação com estatísticas de sucesso/falha."},
+  {id:86, domain:"Data Migration", text:"Qual a diferença entre 'Insert' e 'Update' em uma transformação?", options:["Insert cria novo registro; Update modifica existente","São idênticos","Insert modifica; Update cria","Insert é só para admins"], correct:0, explanation:"Insert cria novos registros; Update modifica registros existentes (geralmente via Coalesce)."},
+  {id:87, domain:"Data Migration", text:"O que é 'IntegrationHub'?", options:["Um tipo de ACL","Uma plataforma de integrações low-code com spokes pré-construídos para sistemas externos (Slack, Jira, etc.)","Um tipo de usuário","Um relatório"], correct:1, explanation:"IntegrationHub facilita integrações com sistemas externos via 'Spokes' (conectores pré-construídos)."},
+  {id:88, domain:"Data Migration", text:"O que é um 'REST Message' na ServiceNow?", options:["Um tipo de ACL","Uma definição de chamada REST para integrar com APIs externas","Um tipo de usuário","Um relatório"], correct:1, explanation:"REST Messages definem endpoints e métodos para consumir APIs REST externas."},
+  {id:89, domain:"Data Migration", text:"O que é 'Mid Server'?", options:["Um servidor intermediário que permite comunicação segura entre ServiceNow (cloud) e recursos internos da rede corporativa","Um tipo de ACL","Um tipo de usuário","Um relatório"], correct:0, explanation:"Mid Server atua como ponte segura entre a instância cloud e recursos internos (Discovery, integrações)."},
+  {id:90, domain:"Data Migration", text:"Qual a boa prática ao importar grandes volumes de dados?", options:["Importar tudo de uma vez sem teste","Testar com pequeno lote, validar mapeamento, depois executar em massa","Não usar Import Sets","Usar apenas scripts manuais"], correct:1, explanation:"Sempre teste com amostra pequena, valide o Transform Map, e só então execute a carga completa."}
+];
+
+let state = { currentIndex: 0, answers: {}, flagged: new Set(), filter: 'all', reviewMode: false, order: questions.map((_,i)=>i) };
+
+function loadState() {
+  const saved = localStorage.getItem('snow_csa_state_v2');
+  if (saved) {
+    const parsed = JSON.parse(saved);
+    state.answers = parsed.answers || {};
+    state.flagged = new Set(parsed.flagged || []);
+    if (parsed.order) state.order = parsed.order;
+  }
+}
+
+function saveState() {
+  localStorage.setItem('snow_csa_state_v2', JSON.stringify({
+    answers: state.answers,
+    flagged: Array.from(state.flagged),
+    order: state.order
+  }));
+}
+
+function getOrderedQuestions() {
+  return state.order.map(i => questions[i]);
+}
+
+function getFilteredQuestions() {
+  let filtered = getOrderedQuestions();
+  if (state.filter !== 'all') filtered = filtered.filter(q => q.domain === state.filter);
+  if (state.reviewMode) filtered = filtered.filter(q => state.answers[q.id] && state.answers[q.id].selected !== q.correct);
+  return filtered;
+}
+
+function renderDomainFilter() {
+  const domains = ['all', ...new Set(questions.map(q => q.domain))];
+  const container = document.getElementById('domainFilter');
+  container.innerHTML = domains.map(d => {
+    const count = d === 'all' ? questions.length : questions.filter(q => q.domain === d).length;
+    return `<button class="filter-btn ${state.filter === d ? 'active' : ''}" data-domain="${d}">${d === 'all' ? ' Todos' : d} <small>(${count})</small></button>`;
+  }).join('');
+  container.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      state.filter = btn.dataset.domain;
+      state.currentIndex = 0;
+      state.reviewMode = false;
+      render();
+    });
+  });
+}
+
+function renderDots() {
+  const filtered = getFilteredQuestions();
+  const container = document.getElementById('questionDots');
+  container.innerHTML = filtered.map((q, i) => {
+    let cls = 'dot';
+    if (i === state.currentIndex) cls += ' current';
+    if (state.answers[q.id]) cls += state.answers[q.id].selected === q.correct ? ' correct' : ' incorrect';
+    if (state.flagged.has(q.id)) cls += ' flagged';
+    return `<div class="${cls}" data-index="${i}" title="Q${q.id}">${i+1}</div>`;
+  }).join('');
+  container.querySelectorAll('.dot').forEach(dot => {
+    dot.addEventListener('click', () => {
+      state.currentIndex = parseInt(dot.dataset.index);
+      renderQuestion();
+    });
+  });
+}
+
+function renderQuestion() {
+  const filtered = getFilteredQuestions();
+  if (filtered.length === 0) {
+    document.getElementById('questionCard').innerHTML = `<div style="text-align:center; padding:40px;"><div style="font-size:3rem; margin-bottom:16px;">🎯</div><h3>Nenhuma questão neste filtro</h3><p style="color:var(--text-muted); margin-top:10px;">Altere o filtro ou saia do modo de revisão.</p></div>`;
+    return;
+  }
+  const q = filtered[state.currentIndex];
+  const answered = state.answers[q.id];
+  document.getElementById('qNumber').textContent = `Questão ${state.currentIndex + 1} de ${filtered.length} (ID ${q.id})`;
+  document.getElementById('qDomain').textContent = q.domain;
+  document.getElementById('qText').textContent = q.text;
+  const optionsContainer = document.getElementById('qOptions');
+  const letters = ['A','B','C','D'];
+  optionsContainer.innerHTML = q.options.map((opt, i) => {
+    let cls = 'option';
+    if (answered) {
+      cls += ' disabled';
+      if (i === q.correct) cls += ' correct';
+      else if (i === answered.selected && i !== q.correct) cls += ' incorrect';
+    }
+    return `<div class="${cls}" data-index="${i}"><div class="option-letter">${letters[i]}</div><div>${opt}</div></div>`;
+  }).join('');
+  optionsContainer.querySelectorAll('.option').forEach(opt => {
+    opt.addEventListener('click', () => {
+      if (answered) return;
+      const selected = parseInt(opt.dataset.index);
+      state.answers[q.id] = { selected };
+      saveState();
+      renderQuestion();
+      renderStats();
+      renderDots();
+      checkCompletion();
+    });
+  });
+  const feedback = document.getElementById('qFeedback');
+  const feedbackTitle = document.getElementById('feedbackTitle');
+  const feedbackText = document.getElementById('feedbackText');
+  if (answered) {
+    const isCorrect = answered.selected === q.correct;
+    feedback.className = `feedback show ${isCorrect ? 'correct' : 'incorrect'}`;
+    feedbackTitle.innerHTML = isCorrect ? '✅ Resposta Correta!' : `❌ Incorreta — Correta: ${letters[q.correct]}`;
+    feedbackText.textContent = q.explanation;
+  } else { feedback.className = 'feedback'; }
+  document.getElementById('btnFlag').textContent = state.flagged.has(q.id) ? '🚩 Desmarcar' : '🚩 Marcar';
+  const total = filtered.length;
+  const progress = ((state.currentIndex + 1) / total) * 100;
+  document.getElementById('progressFill').style.width = progress + '%';
+  document.getElementById('progressText').textContent = `Questão ${state.currentIndex + 1} de ${total}`;
+  document.getElementById('progressPercent').textContent = Math.round(progress) + '%';
+  document.getElementById('btnPrev').disabled = state.currentIndex === 0;
+  document.getElementById('btnNext').disabled = state.currentIndex === filtered.length - 1;
+}
+
+function renderStats() {
+  const answered = Object.keys(state.answers).length;
+  let correctCount = 0;
+  for (const q of questions) {
+    if (state.answers[q.id] && state.answers[q.id].selected === q.correct) correctCount++;
+  }
+  const percent = answered > 0 ? Math.round((correctCount / answered) * 100) : 0;
+  document.getElementById('statAnswered').textContent = answered;
+  document.getElementById('statCorrect').textContent = correctCount;
+  document.getElementById('statPercent').textContent = percent + '%';
+  document.getElementById('statFlagged').textContent = state.flagged.size;
+}
+
+function render() { renderDomainFilter(); renderDots(); renderQuestion(); renderStats(); }
+
+function checkCompletion() {
+  const filtered = getFilteredQuestions();
+  const allAnswered = filtered.length > 0 && filtered.every(q => state.answers[q.id]);
+  if (allAnswered) {
+    let correct = 0;
+    const domainStats = {};
+    filtered.forEach(q => {
+      if (state.answers[q.id].selected === q.correct) correct++;
+      if (!domainStats[q.domain]) domainStats[q.domain] = {c:0,t:0};
+      domainStats[q.domain].t++;
+      if (state.answers[q.id].selected === q.correct) domainStats[q.domain].c++;
+    });
+    const percent = Math.round((correct / filtered.length) * 100);
+    showModal(percent, correct, filtered.length, domainStats);
+  }
+}
+
+function showModal(percent, correct, total, domainStats) {
+  const icon = document.getElementById('modalIcon');
+  const title = document.getElementById('modalTitle');
+  const text = document.getElementById('modalText');
+  if (percent >= 80) { icon.textContent = '🏆'; title.textContent = 'Excelente!'; text.textContent = 'Você está pronto para a certificação CSA!'; }
+  else if (percent >= 70) { icon.textContent = '👍'; title.textContent = 'Bom trabalho!'; text.textContent = 'Quase lá! Revise os pontos fracos.'; }
+  else if (percent >= 60) { icon.textContent = '📚'; title.textContent = 'No caminho certo'; text.textContent = 'Continue estudando os domínios fracos.'; }
+  else { icon.textContent = '💪'; title.textContent = 'Não desista!'; text.textContent = 'Foque nos domínios com menor desempenho.'; }
+  document.getElementById('modalScore').textContent = percent + '%';
+  document.getElementById('modalScoreLabel').textContent = `${correct} de ${total} corretas`;
+  const ds = document.getElementById('modalDomainScore');
+  ds.innerHTML = Object.entries(domainStats).map(([d, s]) => {
+    const p = Math.round((s.c/s.t)*100);
+    const color = p >= 70 ? 'var(--success)' : p >= 50 ? 'var(--warning)' : 'var(--danger)';
+    return `<div class="domain-score-item">${d}<span class="pct" style="color:${color}">${p}%</span></div>`;
+  }).join('');
+  document.getElementById('modal').classList.add('show');
+}
+
+function closeModal() { document.getElementById('modal').classList.remove('show'); }
+
+function resetProgress() {
+  if (confirm('Resetar todo o progresso? Esta ação não pode ser desfeita.')) {
+    localStorage.removeItem('snow_csa_state_v2');
+    state = { currentIndex: 0, answers: {}, flagged: new Set(), filter: 'all', reviewMode: false, order: questions.map((_,i)=>i) };
+    render();
+    closeModal();
+  }
+}
+
+document.getElementById('btnPrev').addEventListener('click', () => {
+  if (state.currentIndex > 0) { state.currentIndex--; renderQuestion(); renderDots(); }
+});
+document.getElementById('btnNext').addEventListener('click', () => {
+  const filtered = getFilteredQuestions();
+  if (state.currentIndex < filtered.length - 1) { state.currentIndex++; renderQuestion(); renderDots(); }
+});
+document.getElementById('btnFlag').addEventListener('click', () => {
+  const filtered = getFilteredQuestions();
+  const q = filtered[state.currentIndex];
+  if (state.flagged.has(q.id)) state.flagged.delete(q.id); else state.flagged.add(q.id);
+  saveState(); renderStats(); renderDots(); renderQuestion();
+});
+document.getElementById('btnReview').addEventListener('click', () => {
+  state.reviewMode = !state.reviewMode;
+  state.currentIndex = 0;
+  document.getElementById('btnReview').textContent = state.reviewMode ? '📋 Ver todas' : '📚 Apenas erradas';
+  render();
+});
+document.getElementById('btnShuffle').addEventListener('click', () => {
+  if (!confirm('Embaralhar a ordem das questões?')) return;
+  state.order = [...state.order].sort(() => Math.random() - 0.5);
+  state.currentIndex = 0;
+  saveState();
+  render();
+});
+document.getElementById('btnReset').addEventListener('click', resetProgress);
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'ArrowRight') document.getElementById('btnNext').click();
+  if (e.key === 'ArrowLeft') document.getElementById('btnPrev').click();
+  if (['1','2','3','4'].includes(e.key)) {
+    const opts = document.querySelectorAll('.option:not(.disabled)');
+    if (opts[parseInt(e.key)-1]) opts[parseInt(e.key)-1].click();
+  }
+});
+
+loadState();
+render();
+</script>
+</body>
+</html>
